@@ -113,3 +113,5 @@ source /home/linuxbrew/.linuxbrew/opt/powerlevel10k/share/powerlevel10k/powerlev
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

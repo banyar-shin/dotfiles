@@ -11,5 +11,3 @@ elif command -v apt > /dev/null; then
 else
     echo 'Unknown OS!'
 fi
-
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
