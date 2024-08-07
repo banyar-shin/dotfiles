@@ -1,3 +1,7 @@
+export TERM_PROGRAM="kitty"
+
+neofetch
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -28,10 +32,9 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
 defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 
-[ -f "/Users/banyar/.ghcup/env" ] && . "/Users/banyar/.ghcup/env" # ghcup-env
-
 alias config='/usr/bin/git --git-dir=/Users/banyar/.cfg/ --work-tree=/Users/banyar'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
