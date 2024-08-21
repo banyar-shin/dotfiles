@@ -55,3 +55,6 @@ source <(fzf --zsh)
 
 export EDITOR="nvim"
 export VISUAL="nvim"
+
+eval "$(zoxide init zsh)"
+alias lzd='lazydocker'
