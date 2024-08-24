@@ -1,23 +1,25 @@
-######################
-# MACOS KITTY CONFIG #
-######################
+#############################
+# MACOS & ARCH KITTY CONFIG #
+#############################
 
 font_family      CaskaydiaCove Nerd Font
 bold_font        auto
 italic_font      auto
 bold_italic_font auto
 
-# font_size 18.0
+font_size ${KITTY_FONT_SIZE}
 
 mouse_hide_wait 2.0
-
 detect_urls yes
 
 tab_title_template "{index}: {title[title.rfind('/')+1:]}"
+clipboard_control write-clipboard write-primary read-clipboard read-primary-ask
 
+# Gruvbox Material Theme
 include themes/gruvbox-material.conf
 
-clipboard_control write-clipboard write-primary read-clipboard read-primary-ask
+# Default Hyprland Theme (Gruvbox Retro)
+# include theme.conf
 
 # KEYBINDS:
 map control+c   copy_to_clipboard
@@ -37,13 +39,6 @@ map cmd+shift+down resize_window shorter
 # active_border_color       #ffffff
 # inactive_border_color     #282828
 
-###########################
-# ARCH LINUX KITTY CONFIG #
-###########################
-
-font_size ${KITTY_FONT_SIZE}
-window_padding_width 25
-# include theme.conf
-#background_opacity 0.60
-#hide_window_decorations yes
-#confirm_os_window_close 0
+# background_opacity 0.60
+# hide_window_decorations yes
+# confirm_os_window_close 0
