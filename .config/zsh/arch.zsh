@@ -83,7 +83,7 @@ alias .5='cd ../../../../..'
 alias mkdir='mkdir -p'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.config/p10k/arch.p10k.zsh ]] || source ~/.config/p10k/arch.p10k.zsh
+[[ ! -f ~/.config/p10k/mac.p10k.zsh ]] || source ~/.config/p10k/mac.p10k.zsh
 
 #Display Pokemon
 pokemon-colorscripts --no-title -r 1,3,6
