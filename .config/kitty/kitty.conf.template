@@ -41,7 +41,7 @@ map cmd+shift+down resize_window shorter
 # ARCH LINUX KITTY CONFIG #
 ###########################
 
-font_size 18.0
+font_size ${KITTY_FONT_SIZE}
 window_padding_width 25
 # include theme.conf
 #background_opacity 0.60
