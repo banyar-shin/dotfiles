@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 if [[ "$TERM" == "xterm-kitty" ]]; then
   export TERM_PROGRAM="kitty"
 fi
@@ -32,7 +30,7 @@ source $ZSH/oh-my-zsh.sh
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/.config/p10k/mac.p10k.zsh ]] || source ~/.config/p10k/mac.p10k.zsh
 
 defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 
