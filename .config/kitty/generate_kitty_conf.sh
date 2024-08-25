@@ -2,10 +2,14 @@
 
 # Ensure the environment variable is set
 if command -v pacman >/dev/null; then
+  echo "kitty.conf generator: Linux detected!"
   export KITTY_FONT_SIZE=14.0
+  echo "Font size set to 14.0"
 
 elif [[ $(uname) == "Darwin" ]]; then
+  echo "kitty.conf generator: MacOS created!"
   export KITTY_FONT_SIZE=18.0
+  echo "Font size set to 18.0"
 
 fi
 
