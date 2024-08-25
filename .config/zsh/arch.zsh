@@ -99,4 +99,6 @@ export NVM_DIR="$HOME/.nvm"
 export EDITOR='nvim'
 export VISUAL='nvim'
 
+export PATH=$PATH:/home/banyar/.spicetify
+
 fastfetch
