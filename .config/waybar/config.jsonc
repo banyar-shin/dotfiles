@@ -4,9 +4,9 @@
 // sourced from header module //
 
     "layer": "top",
-    "position": "bottom",
+    "position": "top",
     "mod": "dock",
-    "height": 31,
+    "height": 35,
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
@@ -149,7 +149,7 @@
 	"wlr/taskbar": {
 		"format": "{icon}",
 		"rotate": 0,
-		"icon-size": 18,
+		"icon-size": 21,
 		"icon-theme": "Gruvbox-Plus-Dark",
         "spacing": 0,
 		"tooltip-format": "{title}",
@@ -238,7 +238,7 @@
     },
 
     "tray": {
-        "icon-size": 18,
+        "icon-size": 21,
         "rotate": 0,
         "spacing": 5
     },
