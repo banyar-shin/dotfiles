@@ -34,6 +34,8 @@ map cmd+shift+left resize_window narrower
 map cmd+shift+right resize_window wider
 map cmd+shift+up resize_window taller
 map cmd+shift+down resize_window shorter
+map cmd+enter no_op
+map cmd+shift+enter no_op
 
 # COLORS:
 # active_border_color       #ffffff

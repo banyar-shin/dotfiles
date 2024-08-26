@@ -7,7 +7,7 @@ if command -v pacman >/dev/null; then
   echo "Font size set to 14.0"
 
 elif [[ $(uname) == "Darwin" ]]; then
-  echo "kitty.conf generator: MacOS created!"
+  echo "kitty.conf generator: MacOS detected!"
   export KITTY_FONT_SIZE=18.0
   echo "Font size set to 18.0"
 
