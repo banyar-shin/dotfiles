@@ -2,24 +2,10 @@
 	name = banyar-shin
 	email = banyar.minshin@gmail.com
 [core]
-	editor = code --wait
+	editor = nvim
 	autocrlf = input
 	excludesfile = /Users/banyar/.gitignore_global
-[diff]
-  tool = vscode
-[difftool "vscode"]
-  cmd = code --wait --diff $LOCAL $REMOTE
-[merge]
-  tool = vscode
-[mergetool "vscode"]
-  cmd = code --wait $MERGED
 [commit]
 	template = /Users/banyar/.stCommitMsg
 [init]
 	defaultBranch = main
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
