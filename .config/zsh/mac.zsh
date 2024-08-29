@@ -49,8 +49,6 @@ function yy() {
 	rm -f -- "$tmp"
 }
 
-source <(fzf --zsh)
-
 export EDITOR="nvim"
 export VISUAL="nvim"
 
