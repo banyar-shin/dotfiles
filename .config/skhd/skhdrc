@@ -8,22 +8,24 @@ ctrl + alt - r : yabai --restart-service
 # ----------------------------- SPACE COMMANDS -----------------------------
 
 # Focus previous space by mission-control index
-ctrl - h : yabai -m space --focus prev
+ctrl - h : yabai -m space --focus prev || yabai -m space --focus last
 
 # Focus next space by mission-control index
-ctrl - l : yabai -m space --focus next
+ctrl - l : yabai -m space --focus next || yabai -m space --focus first
 
 # Focus space with mission-control
 ctrl - 1 : yabai -m space --focus 1
 ctrl - 2 : yabai -m space --focus 2
 ctrl - 3 : yabai -m space --focus 3
 ctrl - 4 : yabai -m space --focus 4
+ctrl - 5 : yabai -m space --focus 5
 
 # move window to space #
 ctrl + shift - 1 : yabai -m window --space 1; yabai -m window --focus recent
 ctrl + shift - 2 : yabai -m window --space 2; yabai -m window --focus recent
 ctrl + shift - 3 : yabai -m window --space 3; yabai -m window --focus recent
 ctrl + shift - 4 : yabai -m window --space 4; yabai -m window --focus recent
+ctrl + shift - 5 : yabai -m window --space 5; yabai -m window --focus recent
 
 # move window to prev and next space
 ctrl + shift - h : yabai -m window --space prev; yabai -m space --focus prev

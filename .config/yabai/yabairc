@@ -61,6 +61,9 @@ yabai -m rule --add app="^Dropzone 4$" manage=off
 yabai -m rule --add app="^Shottr$" manage=off
 yabai -m rule --add app="^Hidden Bar$" manage=off
 yabai -m rule --add app="^AlDente$" manage=off
+yabai -m rule --add app="^Notes$" manage=off
 yabai -m rule --add app="^FaceTime$" manage=off
+
+yabai -m rule --add app=".*" sub-layer=normal
 
 echo "yabai configuration loaded.."

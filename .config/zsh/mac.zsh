@@ -54,3 +54,6 @@ export VISUAL="nvim"
 
 eval "$(zoxide init zsh)"
 alias lzd='lazydocker'
+
+export LCJ_PATH="$HOME/git-repos/side-projects/lc-notes/lc-journal.md"
+alias lcj="$HOME/git-repos/side-projects/lc-notes/add_journal_entry.sh"
