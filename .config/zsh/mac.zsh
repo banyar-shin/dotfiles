@@ -32,28 +32,16 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/p10k/mac.p10k.zsh ]] || source ~/.config/p10k/mac.p10k.zsh
 
-defaults write com.apple.desktopservices DSDontWriteNetworkStores true
-
 alias config='/usr/bin/git --git-dir=/Users/banyar/.cfg/ --work-tree=/Users/banyar'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-function yy() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
-}
-
 export EDITOR="nvim"
 export VISUAL="nvim"
 
 eval "$(zoxide init zsh)"
-alias lzd='lazydocker'
 
-export LCJ_PATH="$HOME/git-repos/side-projects/lc-notes/lc-journal.md"
-alias lcj="$HOME/git-repos/side-projects/lc-notes/add_journal_entry.sh"
+export LCJ_PATH="$HOME/git-repos/side-projects/lc-notes"
+alias lcj="$LCJ_PATH/lc-journal.sh"
