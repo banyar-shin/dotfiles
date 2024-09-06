@@ -26,7 +26,6 @@ yabai -m config mouse_follows_focus on
 yabai -m config window_shadow float
 
 # window opacity (default: off)
-# example: render all unfocused windows with 90% opacity
 yabai -m config window_opacity on
 yabai -m config active_window_opacity 0.90
 yabai -m config normal_window_opacity 0.85
@@ -46,24 +45,23 @@ yabai -m config mouse_action2 resize
 # when window is dropped in center of another window, swap them (on edges it will split it)
 yabai -m mouse_drop_action swap
 
-# yabai -m rule --add app="^Spotify$" manage=off
-yabai -m rule --add app="^App Store$" manage=off
-yabai -m rule --add app="^Finder$" manage=off
-yabai -m rule --add app="^System Settings$" manage=off
-yabai -m rule --add app="^Raycast$" manage=off
-yabai -m rule --add app="^Zoom Workplace$" manage=off
-yabai -m rule --add app="^Preview$" manage=off
-yabai -m rule --add app="^Docker Desktop$" manage=off
-yabai -m rule --add app="^TinkerTool$" manage=off
-yabai -m rule --add app="^Mac Mouse Fix$" manage=off
-yabai -m rule --add app="^Bartender$" manage=off
-yabai -m rule --add app="^Dropzone 4$" manage=off
-yabai -m rule --add app="^Shottr$" manage=off
-yabai -m rule --add app="^Hidden Bar$" manage=off
-yabai -m rule --add app="^AlDente$" manage=off
-yabai -m rule --add app="^Notes$" manage=off
-yabai -m rule --add app="^FaceTime$" manage=off
-
-yabai -m rule --add app=".*" sub-layer=normal
+# yabai -m rule --add app="^Spotify$" manage=off sub-layer=below
+yabai -m rule --add app="^App Store$" manage=off sub-layer=below
+yabai -m rule --add app="^Finder$" manage=off sub-layer=below
+yabai -m rule --add app="^System Settings$" manage=off sub-layer=below
+yabai -m rule --add app="^Raycast$" manage=off sub-layer=below
+yabai -m rule --add app="^Zoom Workplace$" manage=off sub-layer=below
+yabai -m rule --add app="^Preview$" manage=off sub-layer=below
+yabai -m rule --add app="^Docker Desktop$" manage=off sub-layer=below
+yabai -m rule --add app="^TinkerTool$" manage=off sub-layer=below
+yabai -m rule --add app="^Mac Mouse Fix$" manage=off sub-layer=below
+yabai -m rule --add app="^Bartender$" manage=off sub-layer=below
+yabai -m rule --add app="^Dropzone 4$" manage=off sub-layer=below
+yabai -m rule --add app="^Shottr$" manage=off sub-layer=below
+yabai -m rule --add app="^Hidden Bar$" manage=off sub-layer=below
+yabai -m rule --add app="^AlDente$" manage=off sub-layer=below
+yabai -m rule --add app="^Notes$" manage=off sub-layer=below
+yabai -m rule --add app="^FaceTime$" manage=off sub-layer=below
+yabai -m rule --add app="^Todoist$" manage=off sub-layer=above
 
 echo "yabai configuration loaded.."
