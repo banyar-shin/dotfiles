@@ -3,6 +3,7 @@
 # stop/start/restart yabai
 ctrl + alt - q : yabai --stop-service
 ctrl + alt - s : yabai --start-service
+
 ctrl + alt - r : yabai --restart-service
 
 # ----------------------------- SPACE COMMANDS -----------------------------
@@ -82,5 +83,5 @@ alt - o : yabai -m window --opacity 1.0
 alt + shift - o : yabai -m window --opacity 0.0
 
 # launch apps
-cmd - return : open -na kitty
-cmd + shift - return : open -na Zen\ Browser
+ctrl + alt + cmd + shift - return : open -na kitty
+ctrl + alt + cmd + shift - z: open -na Zen\ Browser

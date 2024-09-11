@@ -63,5 +63,6 @@ yabai -m rule --add app="^AlDente$" manage=off sub-layer=below
 yabai -m rule --add app="^Notes$" manage=off sub-layer=below
 yabai -m rule --add app="^FaceTime$" manage=off sub-layer=below
 yabai -m rule --add app="^Todoist$" manage=off sub-layer=above
+yabai -m rule --add app="^Activity Monitor$" manage=off sub-layer=below
 
 echo "yabai configuration loaded.."
