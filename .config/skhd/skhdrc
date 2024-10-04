@@ -84,5 +84,6 @@ alt + shift - o : yabai -m window --opacity 0.0
 
 # launch apps
 ctrl + alt + cmd + shift - return : open -na kitty
-
 ctrl + alt + cmd + shift - z: open -na Zen\ Browser
+ctrl + alt + cmd + shift - m: open -na Messages
+ctrl + alt + cmd + shift - a: open -na Arc

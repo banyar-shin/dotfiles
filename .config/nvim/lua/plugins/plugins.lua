@@ -1,3 +1,5 @@
+local cmp = require("cmp")
+
 return {
   -- gruvbox-material theme
   {
@@ -87,6 +89,15 @@ return {
     end,
     ft = { "markdown" },
   },
+
+  -- harpoon plugin
+  -- {
+  --   "ThePrimeagen/harpoon",
+  --   branch = "harpoon2",
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  -- },
+
+  -- disabled plugins
   {
     "garymjr/nvim-snippets",
     enabled = false,

@@ -22,8 +22,7 @@ include themes/gruvbox-material.conf
 # include theme.conf
 
 # KEYBINDS:
-map control+c   copy_to_clipboard
-map control+v   paste_from_clipboard
+# map ctrl+c send_text all \x03
 
 map cmd+shift+t new_window_with_cwd
 map cmd+shift+h move_window left
