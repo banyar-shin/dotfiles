@@ -83,4 +83,4 @@
 # alt + shift - o : yabai -m window --opacity 0.0
 
 # launch apps
-ctrl + alt + cmd + shift - return : open -na kitty
+# ctrl + alt + cmd + shift - return : open -na kitty
