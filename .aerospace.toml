@@ -9,7 +9,7 @@ after-login-command = []
 # You can use it to add commands that run after AeroSpace startup.
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-after-startup-command = []
+after-startup-command = ['exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=6.0']
 
 # Start AeroSpace at login
 start-at-login = true
@@ -21,7 +21,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The 'accordion-padding' specifies the size of accordion padding
 # You can set 0 to disable the padding feature
-accordion-padding = 30
+accordion-padding = 250
 
 # Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
@@ -57,12 +57,12 @@ preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 5
-inner.vertical =   5
-outer.left =       5
-outer.bottom =     5
-outer.top =        5
-outer.right =      5
+inner.horizontal = 8
+inner.vertical =   8
+outer.left =       8
+outer.bottom =     8
+outer.top =        8
+outer.right =      8
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -99,10 +99,10 @@ alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
+alt-h = 'focus left --boundaries all-monitors-outer-frame'
+alt-j = 'focus down --boundaries all-monitors-outer-frame'
+alt-k = 'focus up --boundaries all-monitors-outer-frame'
+alt-l = 'focus right --boundaries all-monitors-outer-frame'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
 alt-shift-h = 'move left'
@@ -120,10 +120,9 @@ ctrl-2 = 'workspace 2'
 ctrl-3 = 'workspace 3'
 ctrl-4 = 'workspace 4'
 ctrl-5 = 'workspace 5'
-# ctrl-6 = 'workspace 6'
-# ctrl-7 = 'workspace 7'
-# ctrl-8 = 'workspace 8'
-# ctrl-9 = 'workspace 9'
+ctrl-6 = 'workspace 6'
+ctrl-7 = 'workspace 7'
+ctrl-8 = 'workspace 8'
 
 ctrl-h = 'workspace prev'
 ctrl-l = 'workspace next'
@@ -163,6 +162,7 @@ cmd-alt-l = ['join-with right', 'mode main']
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-shift-semicolon = 'mode service'
+alt-shift-ctrl-cmd-slash = 'mode service'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -175,6 +175,7 @@ backspace = ['close-all-windows-but-current', 'mode main']
 # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 #s = ['layout sticky tiling', 'mode main']
 
+# apps with custom workspaces
 [[on-window-detected]]
 if.app-name-regex-substring = 'todoist'
 run = 'move-node-to-workspace T'
@@ -188,13 +189,14 @@ if.app-name-regex-substring = 'messages'
 run = 'move-node-to-workspace M'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'spotify'
-run = 'move-node-to-workspace SP'
+if.app-name-regex-substring = 'slack'
+run = 'move-node-to-workspace M'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'slack'
-run = 'move-node-to-workspace SL'
+if.app-name-regex-substring = 'spotify'
+run = 'move-node-to-workspace S'
 
+# floating apps
 [[on-window-detected]]
 if.app-name-regex-substring = 'finder'
 run = 'layout floating'
@@ -202,3 +204,24 @@ run = 'layout floating'
 [[on-window-detected]]
 if.app-name-regex-substring = 'preview'
 run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'appcleaner'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'shottr'
+run = 'layout floating'
+
+[workspace-to-monitor-force-assignment]
+1 = 'main'
+2 = 'main'
+3 = 'main'
+4 = 'main'
+5 = 'main'
+6 = 'secondary'
+7 = 'secondary'
+8 = 'secondary'
+D = ['secondary', 'main']
+M = ['secondary', 'main']
+S = ['secondary', 'main']
