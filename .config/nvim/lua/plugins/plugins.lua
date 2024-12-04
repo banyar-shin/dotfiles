@@ -28,6 +28,21 @@ return {
     opts = {},
   },
 
+  -- neo-tree settings
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = {
+      window = {
+        width = 24,
+      },
+      filesystem = {
+        filtered_items = {
+          visible = true,
+        },
+      },
+    },
+  },
+
   -- disabled plugins
   -- {
   --   "garymjr/nvim-snippets",
