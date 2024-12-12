@@ -221,6 +221,10 @@ run = 'layout floating'
 if.app-name-regex-substring = 'shottr'
 run = 'layout floating'
 
+[[on-window-detected]]
+if.app-name-regex-substring = 'kap'
+run = 'layout floating'
+
 [workspace-to-monitor-force-assignment]
 1 = 'main'
 2 = 'main'
