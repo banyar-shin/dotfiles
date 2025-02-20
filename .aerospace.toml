@@ -204,6 +204,10 @@ run = 'move-node-to-workspace M'
 if.app-name-regex-substring = 'spotify'
 run = 'move-node-to-workspace S'
 
+[[on-window-detected]]
+if.app-name-regex-substring = 'obsidian'
+run = 'move-node-to-workspace O'
+
 # floating apps
 [[on-window-detected]]
 if.app-name-regex-substring = 'finder'
@@ -221,10 +225,6 @@ run = 'layout floating'
 if.app-name-regex-substring = 'shottr'
 run = 'layout floating'
 
-[[on-window-detected]]
-if.app-name-regex-substring = 'kap'
-run = 'layout floating'
-
 [workspace-to-monitor-force-assignment]
 1 = 'main'
 2 = 'main'
@@ -238,3 +238,4 @@ T = ['secondary', 'main']
 D = ['secondary', 'main']
 M = ['secondary', 'main']
 S = ['secondary', 'main']
+O = ['secondary', 'main']
