@@ -218,6 +218,10 @@ if.app-name-regex-substring = 'shottr'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-name-regex-substring = 'tinkertool'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-name-regex-substring = 'unity hub'
 run = 'layout floating'
 

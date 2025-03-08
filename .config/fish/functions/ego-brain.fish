@@ -1,5 +1,5 @@
 # Define the target directory
-set -g EGO_BRAIN_DIR /Users/banyar/git-repos/ego/accomplice-brain
+set -g EGO_BRAIN_DIR $HOME/git-repos/ego/accomplice-brain
 
 # Store the previous directory
 set -g PREV_DIR ""
@@ -12,7 +12,7 @@ function auto_env_switch --on-variable PWD
     # Check if we just entered the target directory or its subdirectories
     if string match -q "$EGO_BRAIN_DIR*" "$CURR_DIR"; and not string match -q "$EGO_BRAIN_DIR*" "$PREV_DIR"
         echo "Entering $EGO_BRAIN_DIR or a subdirectory: Activating environment..."
-        conda activate qa-agent
+        conda activate accomplice-brain
         source .venv/bin/activate.fish
     end
 
