@@ -175,11 +175,6 @@ backspace = ['close-all-windows-but-current', 'mode main']
 #s = ['layout sticky tiling', 'mode main']
 
 # apps with custom workspaces
-# apps with custom workspaces
-[[on-window-detected]]
-if.app-name-regex-substring = 'facetime'
-run = 'move-node-to-workspace 4'
-
 [[on-window-detected]]
 if.app-name-regex-substring = 'discord'
 run = 'move-node-to-workspace D'
@@ -199,6 +194,10 @@ run = 'move-node-to-workspace S'
 [[on-window-detected]]
 if.app-name-regex-substring = 'obsidian'
 run = 'move-node-to-workspace O'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'facetime'
+run = 'layout floating'
 
 # floating apps
 [[on-window-detected]]
