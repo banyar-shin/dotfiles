@@ -123,6 +123,8 @@ ctrl-3 = 'workspace 3'
 ctrl-4 = 'workspace 4'
 ctrl-5 = 'workspace 5'
 ctrl-6 = 'workspace 6'
+ctrl-7 = 'workspace 7'
+cmd-shift-alt-ctrl-u = 'workspace U'
 
 ctrl-h = 'workspace prev'
 ctrl-l = 'workspace next'
@@ -137,6 +139,7 @@ ctrl-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
 ctrl-shift-4 = 'move-node-to-workspace 4 --focus-follows-window'
 ctrl-shift-5 = 'move-node-to-workspace 5 --focus-follows-window'
 ctrl-shift-6 = 'move-node-to-workspace 6 --focus-follows-window'
+ctrl-shift-7 = 'move-node-to-workspace 7 --focus-follows-window'
 
 ctrl-shift-h = 'move-node-to-workspace prev --focus-follows-window'
 ctrl-shift-l = 'move-node-to-workspace next --focus-follows-window'
@@ -145,9 +148,9 @@ ctrl-shift-right = 'move-node-to-monitor next --focus-follows-window'
 ctrl-shift-left = 'move-node-to-monitor prev --focus-follows-window'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-alt-tab = 'workspace-back-and-forth'
+# alt-tab = 'workspace-back-and-forth'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
-alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+# alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 alt-r = 'layout horizontal vertical'
 alt-f = 'layout floating tiling'
@@ -192,16 +195,20 @@ if.app-name-regex-substring = 'spotify'
 run = 'move-node-to-workspace S'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'obsidian'
-run = 'move-node-to-workspace O'
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'facetime'
-run = 'layout floating'
+if.app-name-regex-substring = 'unity'
+run = 'move-node-to-workspace U'
 
 # floating apps
 [[on-window-detected]]
 if.app-name-regex-substring = 'finder'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'fork'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'facetime'
 run = 'layout floating'
 
 [[on-window-detected]]
@@ -228,10 +235,11 @@ run = 'layout floating'
 1 = 'main'
 2 = 'main'
 3 = 'main'
-4 = ['secondary', 'main']
+4 = 'main'
 5 = ['secondary', 'main']
 6 = ['secondary', 'main']
+7 = ['secondary', 'main']
 D = ['secondary', 'main']
 M = ['secondary', 'main']
 S = ['secondary', 'main']
-O = ['secondary', 'main']
+U = 'main'

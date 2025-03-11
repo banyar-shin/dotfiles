@@ -1,6 +1,6 @@
 [user]
 	name = banyar-shin
-	email = banyar.minshin@gmail.com
+	email = banyar@ego.live
 [core]
 	editor = nvim
 	autocrlf = input
