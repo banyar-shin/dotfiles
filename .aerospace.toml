@@ -124,7 +124,7 @@ ctrl-4 = 'workspace 4'
 ctrl-5 = 'workspace 5'
 ctrl-6 = 'workspace 6'
 ctrl-7 = 'workspace 7'
-cmd-shift-alt-ctrl-u = 'workspace U'
+cmd-shift-alt-ctrl-v = 'workspace U'
 
 ctrl-h = 'workspace prev'
 ctrl-l = 'workspace next'
@@ -239,7 +239,7 @@ run = 'layout floating'
 5 = ['secondary', 'main']
 6 = ['secondary', 'main']
 7 = ['secondary', 'main']
+U = 'main'
 D = ['secondary', 'main']
 M = ['secondary', 'main']
 S = ['secondary', 'main']
-U = 'main'
