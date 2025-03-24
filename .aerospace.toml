@@ -124,7 +124,7 @@ ctrl-4 = 'workspace 4'
 ctrl-5 = 'workspace 5'
 ctrl-6 = 'workspace 6'
 ctrl-7 = 'workspace 7'
-cmd-shift-alt-ctrl-v = 'workspace U'
+ctrl-u = 'workspace U'
 
 ctrl-h = 'workspace prev'
 ctrl-l = 'workspace next'
@@ -140,6 +140,7 @@ ctrl-shift-4 = 'move-node-to-workspace 4 --focus-follows-window'
 ctrl-shift-5 = 'move-node-to-workspace 5 --focus-follows-window'
 ctrl-shift-6 = 'move-node-to-workspace 6 --focus-follows-window'
 ctrl-shift-7 = 'move-node-to-workspace 7 --focus-follows-window'
+ctrl-shift-u = 'move-node-to-workspace 7 --focus-follows-window'
 
 ctrl-shift-h = 'move-node-to-workspace prev --focus-follows-window'
 ctrl-shift-l = 'move-node-to-workspace next --focus-follows-window'
@@ -220,15 +221,15 @@ if.app-name-regex-substring = 'appcleaner'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-name-regex-substring = 'notes'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-name-regex-substring = 'shottr'
 run = 'layout floating'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'tinkertool'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'unity hub'
 run = 'layout floating'
 
 [workspace-to-monitor-force-assignment]

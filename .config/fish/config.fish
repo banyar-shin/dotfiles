@@ -20,3 +20,10 @@ end
 # <<< conda initialize <<<
 
 source ~/.config/fish/functions/ego-brain.fish
+
+# pnpm
+set -gx PNPM_HOME "/Users/banyar-ego/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
