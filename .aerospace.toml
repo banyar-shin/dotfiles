@@ -123,7 +123,7 @@ ctrl-3 = 'workspace 3'
 ctrl-4 = 'workspace 4'
 ctrl-5 = 'workspace 5'
 ctrl-6 = 'workspace 6'
-ctrl-u = 'workspace U'
+ctrl-v = 'workspace V'
 
 ctrl-h = 'workspace prev'
 ctrl-l = 'workspace next'
