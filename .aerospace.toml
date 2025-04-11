@@ -120,10 +120,10 @@ alt-shift-equal = 'resize smart +50'
 ctrl-1 = 'workspace 1'
 ctrl-2 = 'workspace 2'
 ctrl-3 = 'workspace 3'
+ctrl-v = 'workspace V'
 ctrl-4 = 'workspace 4'
 ctrl-5 = 'workspace 5'
 ctrl-6 = 'workspace 6'
-ctrl-v = 'workspace V'
 
 ctrl-h = 'workspace prev'
 ctrl-l = 'workspace next'
@@ -135,11 +135,10 @@ ctrl-left = 'focus-monitor prev'
 ctrl-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
 ctrl-shift-2 = 'move-node-to-workspace 2 --focus-follows-window'
 ctrl-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
+ctrl-shift-v = 'move-node-to-workspace V --focus-follows-window'
 ctrl-shift-4 = 'move-node-to-workspace 4 --focus-follows-window'
 ctrl-shift-5 = 'move-node-to-workspace 5 --focus-follows-window'
 ctrl-shift-6 = 'move-node-to-workspace 6 --focus-follows-window'
-ctrl-shift-7 = 'move-node-to-workspace 7 --focus-follows-window'
-ctrl-shift-v = 'move-node-to-workspace V --focus-follows-window'
 ctrl-shift-w = 'move-node-to-workspace M --focus-follows-window'
 ctrl-shift-m = 'move-node-to-workspace M --focus-follows-window'
 ctrl-shift-s = 'move-node-to-workspace S --focus-follows-window'
@@ -212,6 +211,10 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'facetime'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'simulator'
 run = 'layout floating'
 
 [[on-window-detected]]
