@@ -9,7 +9,7 @@
           "properties": {
             "cache_duration": "none"
           },
-          "template": "\u250c {{ .UserName }}@{{ .HostName }} ",
+          "template": "\u250c {{ .UserName }} ",
           "foreground": "#ffffff",
           "type": "session",
           "style": "plain"
@@ -65,17 +65,6 @@
           "powerline_symbol": "\ue0b0",
           "background": "#ffee58",
           "type": "terraform",
-          "style": "powerline"
-        },
-        {
-          "properties": {
-            "cache_duration": "none"
-          },
-          "template": " error ",
-          "foreground": "#ffffff",
-          "powerline_symbol": "\ue0b0",
-          "background": "#ff8080",
-          "type": "status",
           "style": "powerline"
         }
       ],
