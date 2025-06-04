@@ -135,13 +135,14 @@ ctrl-left = 'focus-monitor prev'
 ctrl-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
 ctrl-shift-2 = 'move-node-to-workspace 2 --focus-follows-window'
 ctrl-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
-ctrl-shift-v = 'move-node-to-workspace V --focus-follows-window'
 ctrl-shift-4 = 'move-node-to-workspace 4 --focus-follows-window'
 ctrl-shift-5 = 'move-node-to-workspace 5 --focus-follows-window'
 ctrl-shift-6 = 'move-node-to-workspace 6 --focus-follows-window'
-ctrl-shift-w = 'move-node-to-workspace M --focus-follows-window'
+ctrl-shift-d = 'move-node-to-workspace D --focus-follows-window'
+ctrl-shift-f = 'move-node-to-workspace F --focus-follows-window'
 ctrl-shift-m = 'move-node-to-workspace M --focus-follows-window'
 ctrl-shift-s = 'move-node-to-workspace S --focus-follows-window'
+ctrl-shift-v = 'move-node-to-workspace V --focus-follows-window'
 
 ctrl-shift-h = 'move-node-to-workspace prev --focus-follows-window'
 ctrl-shift-l = 'move-node-to-workspace next --focus-follows-window'
@@ -200,13 +201,25 @@ run = 'move-node-to-workspace S'
 if.app-name-regex-substring = 'unity'
 run = 'move-node-to-workspace V'
 
+[[on-window-detected]]
+if.app-name-regex-substring = 'fork'
+run = 'move-node-to-workspace F'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'zen'
+run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'cursor'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'wezterm'
+run = 'move-node-to-workspace 3'
+
 # floating apps
 [[on-window-detected]]
 if.app-name-regex-substring = 'finder'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'fork'
 run = 'layout floating'
 
 [[on-window-detected]]
@@ -237,6 +250,14 @@ run = 'layout floating'
 if.app-name-regex-substring = 'tinkertool'
 run = 'layout floating'
 
+[[on-window-detected]]
+if.app-name-regex-substring = 'cap'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'openemu'
+run = 'layout floating'
+
 [workspace-to-monitor-force-assignment]
 1 = 'main'
 2 = 'main'
@@ -246,5 +267,6 @@ V = 'main'
 5 = ['secondary', 'main']
 6 = ['secondary', 'main']
 D = ['secondary', 'main']
+F = ['secondary', 'main']
 M = ['secondary', 'main']
 S = ['secondary', 'main']
