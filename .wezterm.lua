@@ -3,11 +3,28 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
-config.color_scheme = "Gruvbox Material (Gogh)"
+local scheme_dark = "Gruvbox Material (Gogh)"
+local scheme_light = "Gruvbox Light"
+config.color_scheme = scheme_dark
+
 config.font_size = 16.0
 config.font = wezterm.font("CaskaydiaCove Nerd Font")
 
 config.keys = {
+	-- Toggle light/dark
+	{
+		key = "d",
+		mods = "ALT|SHIFT",
+		action = wezterm.action_callback(function(window)
+			local overrides = window:get_config_overrides() or {}
+			if overrides.color_scheme == scheme_light then
+				overrides.color_scheme = scheme_dark
+			else
+				overrides.color_scheme = scheme_light
+			end
+			window:set_config_overrides(overrides)
+		end),
+	},
 	{ key = "Enter", mods = "ALT", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 	{ key = "Enter", mods = "ALT|SHIFT", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
 

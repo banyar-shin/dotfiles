@@ -1,6 +1,8 @@
 [user]
 	name = banyar-shin
-	email = banyar@ego.live
+	email = banyar.minshin@gmail.com
+[includeIf "gitdir:~/git-repos/ego/"]
+	path = ~/git-repos/ego/.gitconfig
 [core]
 	editor = nvim
 	autocrlf = input
