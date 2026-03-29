@@ -31,5 +31,7 @@ source ~/.config/fish/functions/env-switch.fish
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
 [ -f /Users/banyar-ego/.npm/_npx/6913fdfd1ea7a741/node_modules/tabtab/.completions/electron-forge.fish ]; and . /Users/banyar-ego/.npm/_npx/6913fdfd1ea7a741/node_modules/tabtab/.completions/electron-forge.fish
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/banyar-ego/google-cloud-sdk/path.fish.inc' ]; . '/Users/banyar-ego/google-cloud-sdk/path.fish.inc'; end
+fish_add_path $HOME/.local/bin
+
+# OpenClaw Completion
+source "/Users/banyar-ego/.openclaw/completions/openclaw.fish"

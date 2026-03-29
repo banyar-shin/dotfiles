@@ -72,3 +72,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+# OpenClaw Completion
+source <(openclaw completion --shell zsh)
