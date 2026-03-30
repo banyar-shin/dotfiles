@@ -1,0 +1,42 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry"
+    }
+  },
+  "buffer_font_weight": 400.0,
+  "buffer_font_family": "CaskaydiaCove Nerd Font Mono",
+  "icon_theme": {
+    "mode": "system",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)"
+  },
+  "telemetry": {
+    "diagnostics": true,
+    "metrics": true
+  },
+  "session": {
+    "trust_all_worktrees": true
+  },
+  "base_keymap": "VSCode",
+  "vim_mode": true,
+  "project_panel": {
+    "auto_fold_dirs": true,
+    "folder_default_open": false
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "system",
+    "light": "Gruvbox Light",
+    "dark": "Gruvbox Light"
+  },
+}
