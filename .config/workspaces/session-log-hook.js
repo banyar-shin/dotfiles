@@ -12,7 +12,7 @@ const VAULT = path.join(
   "Library/Mobile Documents/iCloud~md~obsidian/Documents/chrono-brain"
 );
 const SESSIONS_DIR = path.join(VAULT, "Sessions");
-const SUMMARY_FILE = path.join(os.homedir(), ".claude", "last-session-summary.txt");
+const SUMMARY_FILE = path.join(os.homedir(), ".gyst", "last-session-summary.txt");
 
 function loadProjects() {
   try {

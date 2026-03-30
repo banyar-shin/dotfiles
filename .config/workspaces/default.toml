@@ -18,16 +18,12 @@ name = "default"
 # --- Paths (drives `ws open` / Zed) ---
 
 [[paths]]
+path = "~/git-repos"
+label = "git-repos"
+
+[[paths]]
 path = "~/.config"
 label = "dotfiles (.cfg repo + nvim submodule)"
-
-[[paths]]
-path = "~/git-repos/ego/chat-app"
-label = "chat-app"
-
-[[paths]]
-path = "~/git-repos/ego/sideclaw-plugin"
-label = "sideclaw-plugin"
 
 # --- Projects (drives Obsidian sync + living docs) ---
 # type: repo | life | infra | learning
