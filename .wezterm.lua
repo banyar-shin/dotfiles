@@ -35,8 +35,13 @@ config.keys = {
 				f:close()
 			end
 
-			-- Send reload command to active pane
-			pane:send_text("theme-reload\n")
+			-- Only reload prompt if pane is at an idle shell
+			local process = pane:get_foreground_process_name() or ""
+			local shell = process:match("([^/]+)$") or ""
+			local shells = { fish = true, zsh = true, bash = true, sh = true }
+			if shells[shell] then
+				pane:send_text("theme-reload\n")
+			end
 		end),
 	},
 	{ key = "Enter", mods = "ALT", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
