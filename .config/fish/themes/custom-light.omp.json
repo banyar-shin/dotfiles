@@ -1,0 +1,101 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "\u250c {{ .UserName }} ",
+          "foreground": "#3c3836",
+          "type": "session",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "style": "folder"
+          },
+          "template": " {{ .Path }} ",
+          "foreground": "#3c3836",
+          "powerline_symbol": "\ue0b0",
+          "background": "#e09000",
+          "type": "path",
+          "style": "powerline"
+        },
+        {
+          "properties": {
+            "branch_ahead_icon": "\u2191",
+            "branch_behind_icon": "\u2193",
+            "branch_gone": "\u2262",
+            "branch_icon": "\ue0a0 ",
+            "branch_identical_icon": "\u2261",
+            "cache_duration": "none",
+            "cherry_pick_icon": "✓ ",
+            "commit_icon": "\u25b7 ",
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "merge_icon": "\u25f4 ",
+            "no_commits_icon": "[no commits]",
+            "rebase_icon": "\u2c62 ",
+            "tag_icon": "\u25b6 "
+          },
+          "template": " {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} \u2502{{ end }}{{ if .Staging.Changed }} {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} {{ .StashCount }}{{ end }} ",
+          "foreground": "#3c3836",
+          "powerline_symbol": "\ue0b0",
+          "background": "#b8bb26",
+          "type": "git",
+          "style": "powerline",
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#d65d0e{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#cc241d{{ end }}",
+            "{{ if gt .Ahead 0 }}#458588{{ end }}",
+            "{{ if gt .Behind 0 }}#928374{{ end }}"
+          ]
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": " {{ .WorkspaceName }} ",
+          "foreground": "#3c3836",
+          "powerline_symbol": "\ue0b0",
+          "background": "#fabd2f",
+          "type": "terraform",
+          "style": "powerline"
+        }
+      ],
+      "newline": true
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "\u2514 ",
+          "foreground": "#7c6f64",
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "$",
+          "foreground": "#3c3836",
+          "type": "text",
+          "style": "plain"
+        }
+      ],
+      "newline": true
+    }
+  ],
+  "version": 3,
+  "final_space": true
+}

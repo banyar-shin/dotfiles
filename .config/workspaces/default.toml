@@ -1,0 +1,88 @@
+# Zed Workspace: default
+# Add/remove paths to manage which projects appear in this workspace.
+#
+# Usage:
+#   ws              - open this workspace in Zed
+#   ws edit         - edit this file
+#   ws list         - list all workspaces
+#   ws <name>       - open a named workspace
+#   ws new <name>   - create a new workspace
+#   ws add <path>   - add a path to default workspace
+#   ws rm <path>    - remove a path from default workspace
+#   ws sync         - sync projects to Obsidian vault
+#   ws info         - show project details
+
+[workspace]
+name = "default"
+
+# --- Paths (drives `ws open` / Zed) ---
+
+[[paths]]
+path = "~/.config"
+label = "dotfiles (.cfg repo + nvim submodule)"
+
+[[paths]]
+path = "~/git-repos/ego/chat-app"
+label = "chat-app"
+
+[[paths]]
+path = "~/git-repos/ego/sideclaw-plugin"
+label = "sideclaw-plugin"
+
+# --- Projects (drives Obsidian sync + living docs) ---
+# type: repo | life | infra | learning
+# status: active | paused | completed | idea
+
+[[projects]]
+name = "Chat App"
+description = "Real-time chat application for EgoAI"
+type = "repo"
+status = "active"
+tags = ["ego", "web"]
+path = "~/git-repos/ego/chat-app"
+started = "2026-03-01"
+
+[[projects]]
+name = "Sideclaw Plugin"
+description = "OpenClaw extension for real-time voice agent integration"
+type = "repo"
+status = "active"
+tags = ["ego", "extension"]
+path = "~/git-repos/ego/sideclaw-plugin"
+started = "2026-03-15"
+
+# --- Personal ---
+
+[[paths]]
+path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/chrono-brain"
+label = "chrono-brain"
+
+[[paths]]
+path = "~/.openclaw/workspace"
+label = "chrono workspace"
+
+[[projects]]
+name = "Chrono Brain"
+description = "Obsidian second-brain vault — knowledge base, daily logs, session tracking"
+type = "infra"
+status = "active"
+tags = ["personal", "obsidian", "chrono"]
+path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/chrono-brain"
+started = "2026-03-23"
+
+[[projects]]
+name = "Chrono Workspace"
+description = "OpenClaw agent workspace — identity, memory, session logs"
+type = "infra"
+status = "active"
+tags = ["personal", "openclaw", "chrono"]
+path = "~/.openclaw/workspace"
+started = "2026-03-23"
+
+[[projects]]
+name = "Chrono Setup"
+description = "Setting up Chrono's infrastructure (workspace, Obsidian vault, memory system)"
+type = "infra"
+status = "active"
+tags = ["personal", "chrono", "infra"]
+started = "2026-03-23"

@@ -142,6 +142,12 @@ EOF
       mv "$tmp" "$file"
       echo "Removed '$resolved' from workspace '$name'"
       ;;
+    sync)
+      node ~/.config/workspaces/sync-obsidian.js
+      ;;
+    info)
+      node ~/.config/workspaces/parse-projects.js --info "$2"
+      ;;
     open|*)
       local name="$cmd"
       [[ "$cmd" = "open" ]] && name="${2:-default}"
