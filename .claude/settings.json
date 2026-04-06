@@ -2,37 +2,11 @@
   "permissions": {
     "defaultMode": "default"
   },
-  "hooks": {
-    "PostToolUse": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "\"/Users/banyar-ego/.local/share/nvm/v22.22.0/bin/node\" \"/Users/banyar-ego/.config/gyst/extract-hook.js\"",
-            "timeout": 2
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "\"/Users/banyar-ego/.local/share/nvm/v22.22.0/bin/node\" \"/Users/banyar-ego/.config/workspaces/session-log-hook.js\"",
-            "timeout": 2,
-            "statusMessage": "Logging session to Obsidian..."
-          }
-        ]
-      }
-    ]
-  },
+  "hooks": {},
   "enabledPlugins": {
-    "github@claude-plugins-official": true,
     "frontend-design@claude-plugins-official": true,
     "supabase@claude-plugins-official": true,
     "slack@claude-plugins-official": true,
-    "superpowers@claude-plugins-official": true,
     "playwright@claude-plugins-official": true
   },
   "effortLevel": "medium",

@@ -12,7 +12,10 @@ const VAULT = path.join(
   "Library/Mobile Documents/iCloud~md~obsidian/Documents/chrono-brain"
 );
 const SESSIONS_DIR = path.join(VAULT, "Sessions");
+const KNOWLEDGE_DIR = path.join(VAULT, "second-brain", "lessons");
 const SUMMARY_FILE = path.join(os.homedir(), ".gyst", "last-session-summary.txt");
+const QUEUE_DIR = path.join(os.homedir(), ".gyst", "queue");
+const QUEUE_THRESHOLD = 25;
 
 function loadProjects() {
   try {
@@ -87,6 +90,77 @@ Claude Code session logs for this day.
 `;
 }
 
+// --- Reflect: drain queue when > 25 items ---
+
+function drainQueueIfReady() {
+  try {
+    if (!fs.existsSync(QUEUE_DIR)) return;
+    const files = fs.readdirSync(QUEUE_DIR).filter((f) => f.endsWith(".json"));
+    if (files.length < QUEUE_THRESHOLD) return;
+
+    // Ensure knowledge dir exists
+    if (!fs.existsSync(KNOWLEDGE_DIR)) {
+      fs.mkdirSync(KNOWLEDGE_DIR, { recursive: true });
+    }
+
+    // Read all queue items
+    const items = [];
+    for (const f of files) {
+      try {
+        const raw = fs.readFileSync(path.join(QUEUE_DIR, f), "utf-8");
+        items.push({ file: f, ...JSON.parse(raw) });
+      } catch {
+        // skip malformed
+      }
+    }
+
+    if (items.length === 0) return;
+
+    // Group by type
+    const grouped = {};
+    for (const item of items) {
+      const key = item.type || "misc";
+      if (!grouped[key]) grouped[key] = [];
+      grouped[key].push(item);
+    }
+
+    // Write a batch knowledge note
+    const date = getDate();
+    const time = getTime();
+    const slug = date + "-" + time.replace(":", "");
+    const notePath = path.join(KNOWLEDGE_DIR, `batch-${slug}.md`);
+
+    let content = `---\ntype: lesson\ndate: ${date}\ntags: [auto-extracted, batch-reflect]\nsource: queue-drain\n---\n`;
+    content += `# Extracted Knowledge — ${date} ${time}\n\n`;
+    content += `Auto-extracted from ${items.length} queued events.\n\n`;
+
+    for (const [type, typeItems] of Object.entries(grouped)) {
+      content += `## ${type.charAt(0).toUpperCase() + type.slice(1)}s (${typeItems.length})\n\n`;
+      for (const item of typeItems) {
+        const ts = item.ts ? item.ts.slice(0, 16).replace("T", " ") : "";
+        const trigger = item.context?.trigger || "";
+        content += `- ${ts ? `\`${ts}\` ` : ""}${item.signal || "unknown"}`;
+        if (trigger) content += ` _(${trigger})_`;
+        content += "\n";
+      }
+      content += "\n";
+    }
+
+    fs.writeFileSync(notePath, content);
+
+    // Clear processed queue files
+    for (const f of files) {
+      try {
+        fs.unlinkSync(path.join(QUEUE_DIR, f));
+      } catch {
+        // ignore cleanup errors
+      }
+    }
+  } catch {
+    // Silent — must not break the session hook
+  }
+}
+
 function appendSession(input) {
   const date = getDate();
   const time = getTime();
@@ -135,6 +209,7 @@ function handleInput() {
   } catch {
     appendSession({});
   }
+  drainQueueIfReady();
 }
 
 process.stdin.setEncoding("utf-8");

@@ -7,8 +7,18 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "terminal": {
+    "shell": {
+      "program": "fish"
+    }
+  },
   "agent_servers": {
     "claude-acp": {
+      "favorite_config_option_values": {
+        "mode": [
+          "bypassPermissions"
+        ]
+      },
       "type": "registry"
     }
   },
@@ -29,7 +39,7 @@
   "base_keymap": "VSCode",
   "vim_mode": true,
   "project_panel": {
-    "hide_hidden": true,
+    "hide_hidden": false,
     "auto_fold_dirs": true,
     "folder_default_open": false
   },
