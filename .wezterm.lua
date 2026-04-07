@@ -44,8 +44,9 @@ config.keys = {
 			end
 		end),
 	},
-	{ key = "Enter", mods = "ALT", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-	{ key = "Enter", mods = "ALT|SHIFT", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
+	{ key = "t", mods = "CTRL", action = wezterm.action.SpawnTab("CurrentPaneDomain") },
+	{ key = "Enter", mods = "CTRL", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+	{ key = "Enter", mods = "CTRL|SHIFT", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
 	{ key = "Tab", mods = "CTRL", action = wezterm.action.ActivateTabRelative(1) },
 	{ key = "Tab", mods = "CTRL|SHIFT", action = wezterm.action.ActivateTabRelative(-1) },
 
@@ -53,8 +54,8 @@ config.keys = {
 	{ key = "]", mods = "CTRL", action = wezterm.action.ActivatePaneDirection("Next") },
 	{ key = "[", mods = "CTRL", action = wezterm.action.ActivatePaneDirection("Prev") },
 
-	-- Close current pane
-	{ key = "w", mods = "ALT", action = wezterm.action.CloseCurrentPane({ confirm = true }) },
+	-- Close current pane with the WezTerm scope key.
+	{ key = "w", mods = "CTRL", action = wezterm.action.CloseCurrentPane({ confirm = true }) },
 
 	-- Move tabs with the WezTerm scope key.
 	{ key = "<", mods = "CTRL|SHIFT", action = wezterm.action.MoveTabRelative(-1) },
