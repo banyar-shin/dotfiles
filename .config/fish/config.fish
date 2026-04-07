@@ -38,7 +38,11 @@ source "/Users/banyar-ego/.openclaw/completions/openclaw.fish"
 
 function tmux-ego
     if tmux has-session -t ego 2>/dev/null
-        tmux attach -t ego
+        if set -q TMUX
+            tmux switch-client -t ego
+        else
+            tmux attach -t ego
+        end
     else
         tmux new -s ego -c ~/git-repos/ego
     end
@@ -46,7 +50,11 @@ end
 
 function tmux-personal
     if tmux has-session -t personal 2>/dev/null
-        tmux attach -t personal
+        if set -q TMUX
+            tmux switch-client -t personal
+        else
+            tmux attach -t personal
+        end
     else
         tmux new -s personal
     end
@@ -54,7 +62,11 @@ end
 
 function tmux-immvrse
     if tmux has-session -t immvrse 2>/dev/null
-        tmux attach -t immvrse
+        if set -q TMUX
+            tmux switch-client -t immvrse
+        else
+            tmux attach -t immvrse
+        end
     else
         tmux new -s immvrse -c ~/git-repos/immvrse
     end
