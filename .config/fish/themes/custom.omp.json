@@ -68,7 +68,24 @@
           "style": "powerline"
         }
       ],
-      "newline": true
+      "newline": false
+    },
+    {
+      "type": "rprompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none",
+            "time_format": "15:04"
+          },
+          "template": " {{ .CurrentDate | date .Format }} ",
+          "foreground": "#a89984",
+          "background": "#3c3836",
+          "type": "time",
+          "style": "powerline"
+        }
+      ]
     },
     {
       "type": "prompt",

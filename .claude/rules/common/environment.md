@@ -103,12 +103,3 @@ Agent workspace at `~/.openclaw/workspace/`. Config at `~/.openclaw/openclaw.jso
 ## Claude Code Hooks
 
 Session logging is registered in `~/.claude/settings.json` under the `Stop` event. The hook writes to `Sessions/YYYY-MM-DD.md` in the Obsidian vault, matching the working directory to a project via TOML paths.
-
-**Session end sequence**: When the user says they're done, wrapping up, or says goodbye — run this automatically:
-1. `/gyst:reflect` — extract decisions, lessons, entities from the conversation into the vault
-2. `/gyst:wrap-up` — write session summary to `~/.gyst/last-session-summary.txt`
-3. Stop hook fires — appends summary to Obsidian session log
-
-**Mid-session**: A PostToolUse hook (`~/.config/gyst/extract-hook.js`) queues knowledge-worthy events (git commits, dependency changes, config creation) to `~/.gyst/queue/` for reflect to process.
-
-**Periodic maintenance**: `/gyst:heartbeat` processes inbox, reviews daily logs, densifies connections. `/gyst:synthesize` runs weekly for cross-session pattern recognition.

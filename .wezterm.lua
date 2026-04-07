@@ -58,6 +58,20 @@ config.keys = {
 
 	-- Close current pane with the WezTerm scope key.
 	{ key = "w", mods = "CTRL", action = wezterm.action.CloseCurrentPane({ confirm = true }) },
+	{
+		key = "w",
+		mods = "CMD",
+		action = wezterm.action_callback(function(window, pane)
+			local process = pane:get_foreground_process_name() or ""
+			local program = process:match("([^/]+)$") or ""
+			if program == "tmux" then
+				window:perform_action(wezterm.action.SendKey({ key = "a", mods = "CTRL" }), pane)
+				window:perform_action(wezterm.action.SendKey({ key = "d" }), pane)
+			else
+				window:perform_action(wezterm.action.CloseCurrentTab({ confirm = true }), pane)
+			end
+		end),
+	},
 
 	-- Move tabs with the WezTerm scope key.
 	{ key = "<", mods = "CTRL|SHIFT", action = wezterm.action.MoveTabRelative(-1) },
