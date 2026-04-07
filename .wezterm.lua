@@ -46,17 +46,19 @@ config.keys = {
 	},
 	{ key = "Enter", mods = "ALT", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 	{ key = "Enter", mods = "ALT|SHIFT", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
+	{ key = "Tab", mods = "CTRL", action = wezterm.action.ActivateTabRelative(1) },
+	{ key = "Tab", mods = "CTRL|SHIFT", action = wezterm.action.ActivateTabRelative(-1) },
 
-	-- Pane cycling (moved to brackets)
-	{ key = "]", mods = "ALT", action = wezterm.action.ActivatePaneDirection("Next") },
-	{ key = "[", mods = "ALT", action = wezterm.action.ActivatePaneDirection("Prev") },
+	-- Pane cycling uses Ctrl so Option can belong to tmux.
+	{ key = "]", mods = "CTRL", action = wezterm.action.ActivatePaneDirection("Next") },
+	{ key = "[", mods = "CTRL", action = wezterm.action.ActivatePaneDirection("Prev") },
 
 	-- Close current pane
 	{ key = "w", mods = "ALT", action = wezterm.action.CloseCurrentPane({ confirm = true }) },
 
-	-- Move tabs
-	{ key = "<", mods = "ALT|SHIFT", action = wezterm.action.MoveTabRelative(-1) },
-	{ key = ">", mods = "ALT|SHIFT", action = wezterm.action.MoveTabRelative(1) },
+	-- Move tabs with the WezTerm scope key.
+	{ key = "<", mods = "CTRL|SHIFT", action = wezterm.action.MoveTabRelative(-1) },
+	{ key = ">", mods = "CTRL|SHIFT", action = wezterm.action.MoveTabRelative(1) },
 }
 
 return config
