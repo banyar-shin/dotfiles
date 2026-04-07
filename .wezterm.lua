@@ -47,6 +47,8 @@ config.keys = {
 	{ key = "t", mods = "CTRL", action = wezterm.action.SpawnTab("CurrentPaneDomain") },
 	{ key = "Enter", mods = "CTRL", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 	{ key = "Enter", mods = "CTRL|SHIFT", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
+	{ key = "Enter", mods = "ALT", action = wezterm.action.SendKey({ key = "Enter", mods = "ALT" }) },
+	{ key = "\\", mods = "ALT", action = wezterm.action.SendKey({ key = "\\", mods = "ALT" }) },
 	{ key = "Tab", mods = "CTRL", action = wezterm.action.ActivateTabRelative(1) },
 	{ key = "Tab", mods = "CTRL|SHIFT", action = wezterm.action.ActivateTabRelative(-1) },
 

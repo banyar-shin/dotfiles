@@ -35,3 +35,27 @@ fish_add_path $HOME/.local/bin
 
 # OpenClaw Completion
 source "/Users/banyar-ego/.openclaw/completions/openclaw.fish"
+
+function tmux-ego
+    if tmux has-session -t ego 2>/dev/null
+        tmux attach -t ego
+    else
+        tmux new -s ego -c ~/git-repos/ego
+    end
+end
+
+function tmux-personal
+    if tmux has-session -t personal 2>/dev/null
+        tmux attach -t personal
+    else
+        tmux new -s personal
+    end
+end
+
+function tmux-immvrse
+    if tmux has-session -t immvrse 2>/dev/null
+        tmux attach -t immvrse
+    else
+        tmux new -s immvrse -c ~/git-repos/immvrse
+    end
+end
