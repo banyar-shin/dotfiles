@@ -47,10 +47,6 @@ config.keys = {
 	{ key = "Enter", mods = "ALT", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 	{ key = "Enter", mods = "ALT|SHIFT", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
 
-	-- Tab cycling
-	{ key = "Tab", mods = "ALT", action = wezterm.action.ActivateTabRelative(1) },
-	{ key = "Tab", mods = "ALT|SHIFT", action = wezterm.action.ActivateTabRelative(-1) },
-
 	-- Pane cycling (moved to brackets)
 	{ key = "]", mods = "ALT", action = wezterm.action.ActivatePaneDirection("Next") },
 	{ key = "[", mods = "ALT", action = wezterm.action.ActivatePaneDirection("Prev") },
