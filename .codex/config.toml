@@ -1,0 +1,90 @@
+model = "gpt-5.5"
+model_context_window = 1000000
+model_reasoning_effort = "high"
+sandbox_mode = "workspace-write"
+personality = "friendly"
+notify = ["/Users/banyar-ego/.codex/plugins/cache/openai-bundled/computer-use/1.0.758/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
+
+[projects."/Users/banyar-ego/git-repos/ego/chat-app"]
+trust_level = "trusted"
+
+[projects."/Users/banyar-ego"]
+trust_level = "trusted"
+
+[projects."/Users/banyar-ego/git-repos/ego/character-platform"]
+trust_level = "trusted"
+
+[projects."/private/tmp/dogs-site.WkoUth"]
+trust_level = "trusted"
+
+[projects."/Users/banyar-ego/git-repos/ego/character-platform-plugin"]
+trust_level = "trusted"
+
+[projects."/Users/banyar-ego/git-repos/ego/gemma4-eval"]
+trust_level = "trusted"
+
+[projects."/Users/banyar-ego/git-repos/ego"]
+trust_level = "trusted"
+
+[projects."/Users/banyar-ego/git-repos/ego/workspace"]
+trust_level = "trusted"
+
+[projects."/Users/banyar-ego/git-repos/ego/workspace/gephi"]
+trust_level = "trusted"
+
+[notice.model_migrations]
+"gpt-5.3-codex" = "gpt-5.4"
+
+[tui.model_availability_nux]
+"gpt-5.3-codex-spark" = 2
+"gpt-5.5" = 4
+
+[plugins."github@openai-curated"]
+enabled = true
+
+[plugins."computer-use@openai-bundled"]
+enabled = true
+
+[plugins."gmail@openai-curated"]
+enabled = true
+
+[plugins."google-calendar@openai-curated"]
+enabled = true
+
+[plugins."google-drive@openai-curated"]
+enabled = true
+
+[plugins."browser-use@openai-bundled"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+# BEGIN OMC MANAGED MCP REGISTRY
+
+[mcp_servers.ruflo]
+command = "npx"
+args = ["claude-flow@latest", "mcp", "start"]
+startup_timeout_sec = 15
+
+[marketplaces.openai-bundled]
+last_updated = "2026-04-25T01:14:14Z"
+source_type = "local"
+source = "/Users/banyar-ego/.codex/.tmp/bundled-marketplaces/openai-bundled"
+
+[marketplaces.openai-primary-runtime]
+last_updated = "2026-04-24T11:06:44Z"
+source_type = "local"
+source = "/Users/banyar-ego/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
+
+[features]
+memories = true
+chronicle = false
+
+# END OMC MANAGED MCP REGISTRY
