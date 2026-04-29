@@ -144,9 +144,9 @@ ctrl-shift-p = 'move-node-to-workspace P --focus-follows-window'
 ctrl-shift-s = 'move-node-to-workspace S --focus-follows-window'
 ctrl-shift-t = 'move-node-to-workspace T --focus-follows-window'
 ctrl-shift-v = 'move-node-to-workspace V --focus-follows-window'
-ctrl-shift-c = 'move-node-to-workspace C --focus-follows-window'
 ctrl-shift-b = 'move-node-to-workspace B --focus-follows-window'
 ctrl-shift-o = 'move-node-to-workspace O --focus-follows-window'
+ctrl-shift-x = 'move-node-to-workspace X --focus-follows-window'
 ctrl-shift-z = 'move-node-to-workspace Z --focus-follows-window'
 
 ctrl-shift-h = 'move-node-to-workspace prev --focus-follows-window'
@@ -229,6 +229,10 @@ run = 'move-node-to-workspace S'
 [[on-window-detected]]
 if.app-name-regex-substring = 'parsec'
 run = 'move-node-to-workspace P'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'codex'
+run = 'move-node-to-workspace X'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'claude'

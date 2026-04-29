@@ -32,6 +32,12 @@ trust_level = "trusted"
 [projects."/Users/banyar-ego/git-repos/ego/workspace/gephi"]
 trust_level = "trusted"
 
+[projects."/private/tmp/horse-lumina"]
+trust_level = "trusted"
+
+[projects."/Users/banyar-ego/git-repos/afterquery/aq-swe-take-home-tb-v2"]
+trust_level = "trusted"
+
 [notice.model_migrations]
 "gpt-5.3-codex" = "gpt-5.4"
 
@@ -74,7 +80,7 @@ args = ["claude-flow@latest", "mcp", "start"]
 startup_timeout_sec = 15
 
 [marketplaces.openai-bundled]
-last_updated = "2026-04-25T01:14:14Z"
+last_updated = "2026-04-28T18:10:26Z"
 source_type = "local"
 source = "/Users/banyar-ego/.codex/.tmp/bundled-marketplaces/openai-bundled"
 

@@ -65,7 +65,6 @@ started = "2026-03-01"
 |---|---|
 | `parse-projects.js` | TOML parser, shared lib (`require.main` guarded) |
 | `sync-obsidian.js` | Syncs `[[projects]]` to Obsidian `second-brain/projects/` |
-| `session-log-hook.js` | Stop hook — logs sessions to Obsidian `Sessions/` |
 
 **Sync safety**: Only creates/updates notes with `source: workspace-toml` in frontmatter. Hand-written notes are never overwritten.
 
@@ -77,7 +76,6 @@ Three-area structure:
 - `banyar/` — user workspace (tasks, inbox)
 - `chrono/` — AI workspace (daily-logs, session-logs, background-activities)
 - `second-brain/` — knowledge base (entities, projects, concepts, lessons)
-- `Sessions/` — Claude Code session logs (auto-generated)
 
 **Vault rules** (see `VAULT-RULES.md` in vault):
 - Always use full-path wikilinks: `[[second-brain/projects/Chat App|Chat App]]`
@@ -99,7 +97,3 @@ Agent workspace at `~/.openclaw/workspace/`. Config at `~/.openclaw/openclaw.jso
 ├── oss/              # third-party clones
 └── local-sandboxing/ # no-git experiments
 ```
-
-## Claude Code Hooks
-
-Session logging is registered in `~/.claude/settings.json` under the `Stop` event. The hook writes to `Sessions/YYYY-MM-DD.md` in the Obsidian vault, matching the working directory to a project via TOML paths.
