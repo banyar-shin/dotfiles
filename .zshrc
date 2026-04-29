@@ -40,10 +40,14 @@ source $ZSH/oh-my-zsh.sh
 
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
+# Let tmux extended-key sequences behave like Enter at the shell prompt.
+bindkey '\e[13;2u' accept-line
+bindkey '\e[27;2;13~' accept-line
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/p10k/mac.p10k.zsh ]] || source ~/.config/p10k/mac.p10k.zsh
 
-alias config='/usr/bin/git --git-dir=/Users/banyar/.cfg/ --work-tree=/Users/banyar'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

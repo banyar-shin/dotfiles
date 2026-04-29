@@ -7,6 +7,9 @@ local scheme_dark = "Gruvbox Material (Gogh)"
 local scheme_light = "Gruvbox Light"
 config.color_scheme = scheme_dark
 
+config.term = "xterm-256color"
+config.enable_kitty_keyboard = true
+
 config.font_size = 16.0
 config.font = wezterm.font("CaskaydiaCove Nerd Font")
 
