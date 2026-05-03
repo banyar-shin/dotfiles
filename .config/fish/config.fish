@@ -8,7 +8,7 @@
 # conda is lazy-loaded via ~/.config/fish/conf.d/conda-lazy.fish
 
 # pnpm
-set -gx PNPM_HOME /Users/banyar-ego/Library/pnpm
+set -gx PNPM_HOME "$HOME/Library/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
     set -gx PATH "$PNPM_HOME" $PATH
 end
@@ -18,12 +18,14 @@ end
 
 # tabtab source for electron-forge package
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
-[ -f /Users/banyar-ego/.npm/_npx/6913fdfd1ea7a741/node_modules/tabtab/.completions/electron-forge.fish ]; and . /Users/banyar-ego/.npm/_npx/6913fdfd1ea7a741/node_modules/tabtab/.completions/electron-forge.fish
+[ -f "$HOME/.npm/_npx/6913fdfd1ea7a741/node_modules/tabtab/.completions/electron-forge.fish" ]; and . "$HOME/.npm/_npx/6913fdfd1ea7a741/node_modules/tabtab/.completions/electron-forge.fish"
 
 fish_add_path $HOME/.local/bin
 
 # OpenClaw Completion
-source "/Users/banyar-ego/.openclaw/completions/openclaw.fish"
+if test -f "$HOME/.openclaw/completions/openclaw.fish"
+    source "$HOME/.openclaw/completions/openclaw.fish"
+end
 
 function tmux-ego
     if tmux has-session -t ego 2>/dev/null
@@ -47,6 +49,24 @@ function tmux-personal
     else
         tmux new -s personal
     end
+end
+
+function tmux-nexus
+    ~/.local/bin/tmux-nexus $argv
+end
+
+function nexus
+    cd /Users/banyar/git-repos/nexus/hermes-agent
+    set -lx HERMES_HOME /Users/banyar/git-repos/nexus-instance
+    ./.venv/bin/hermes $argv
+end
+
+function nexus-browser
+    ~/.local/bin/nexus-browser $argv
+end
+
+function nexus-claude
+    ~/.local/bin/nexus-claude $argv
 end
 
 function tmux-immvrse
