@@ -1,6 +1,6 @@
 model = "gpt-5.5"
 model_context_window = 1000000
-model_reasoning_effort = "high"
+model_reasoning_effort = "medium"
 sandbox_mode = "workspace-write"
 personality = "friendly"
 notify = ["/Users/banyar-ego/.codex/plugins/cache/openai-bundled/computer-use/1.0.758/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
@@ -38,6 +38,12 @@ trust_level = "trusted"
 [projects."/Users/banyar-ego/git-repos/afterquery/aq-swe-take-home-tb-v2"]
 trust_level = "trusted"
 
+[projects."/Users/banyar-ego/git-repos/immvrse"]
+trust_level = "trusted"
+
+[projects."/Users/banyar-ego/Documents/Codex/2026-05-04/hello"]
+trust_level = "trusted"
+
 [notice.model_migrations]
 "gpt-5.3-codex" = "gpt-5.4"
 
@@ -60,9 +66,6 @@ enabled = true
 [plugins."google-drive@openai-curated"]
 enabled = true
 
-[plugins."browser-use@openai-bundled"]
-enabled = true
-
 [plugins."documents@openai-primary-runtime"]
 enabled = true
 
@@ -70,6 +73,9 @@ enabled = true
 enabled = true
 
 [plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."browser-use@openai-bundled"]
 enabled = true
 
 # BEGIN OMC MANAGED MCP REGISTRY
@@ -80,12 +86,12 @@ args = ["claude-flow@latest", "mcp", "start"]
 startup_timeout_sec = 15
 
 [marketplaces.openai-bundled]
-last_updated = "2026-04-28T18:10:26Z"
+last_updated = "2026-05-04T17:41:50Z"
 source_type = "local"
 source = "/Users/banyar-ego/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-04-24T11:06:44Z"
+last_updated = "2026-05-04T18:06:53Z"
 source_type = "local"
 source = "/Users/banyar-ego/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 
