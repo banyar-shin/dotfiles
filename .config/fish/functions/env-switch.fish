@@ -90,7 +90,7 @@ function check_and_activate_env
     set found_env 0
 
     # Try to find a conda environment based on directory names
-    if set env_name (find_conda_env_from_path $dir); and test -n "$env_name"
+    if command -q conda; and set env_name (find_conda_env_from_path $dir); and test -n "$env_name"
         echo "Found conda environment '$env_name' for directory: Activating..."
         conda activate $env_name
         set found_env 1
@@ -132,7 +132,7 @@ function auto_env_switch --on-variable PWD
             end
 
             # Try to find the previous environment
-            if set prev_env (find_conda_env_from_path $LAST_ENV_DIR); and test -n "$prev_env"
+            if command -q conda; and set prev_env (find_conda_env_from_path $LAST_ENV_DIR); and test -n "$prev_env"
                 echo "Leaving directory with conda environment '$prev_env': Deactivating..."
                 conda deactivate
                 set deactivated 1
@@ -159,7 +159,11 @@ if status --is-interactive
     set -g PREV_DIR (pwd)
 
     # Cache conda environments at startup
-    set -g CONDA_ENVS (conda env list | string match -r '^[^#\s]+\s' | string trim)
+    if command -q conda
+        set -g CONDA_ENVS (conda env list | string match -r '^[^#\\s]+\\s' | string trim)
+    else
+        set -g CONDA_ENVS
+    end
 
     # Check if we're already in a directory with an environment
     check_and_activate_env (pwd)
