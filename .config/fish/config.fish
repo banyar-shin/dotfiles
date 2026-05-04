@@ -20,7 +20,9 @@ end
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
 [ -f "$HOME/.npm/_npx/6913fdfd1ea7a741/node_modules/tabtab/.completions/electron-forge.fish" ]; and . "$HOME/.npm/_npx/6913fdfd1ea7a741/node_modules/tabtab/.completions/electron-forge.fish"
 
-fish_add_path $HOME/.local/bin
+if not contains -- "$HOME/.local/bin" $PATH
+    set -gx PATH "$HOME/.local/bin" $PATH
+end
 
 # OpenClaw Completion
 if test -f "$HOME/.openclaw/completions/openclaw.fish"
