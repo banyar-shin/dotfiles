@@ -82,7 +82,7 @@ enabled = true
 
 [mcp_servers.ruflo]
 command = "npx"
-args = ["claude-flow@latest", "mcp", "start"]
+args = ["claude-flow@3.6.27", "mcp", "start"]
 startup_timeout_sec = 15
 
 [marketplaces.openai-bundled]
