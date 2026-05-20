@@ -1,69 +1,132 @@
-yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+#!/usr/bin/env sh
 
+# Yabai config rebuilt to approximate ~/.aerospace.toml
+# Notes:
+# - Window-to-space moves on recent macOS and sticky/sub-layer rules require Yabai's scripting addition.
+# - Your SIP is currently enabled, so those advanced parts may not work until SIP is partially disabled.
+
+# Reload scripting addition when available. This is harmless if unavailable, but advanced features need it.
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa 2>/dev/null
+
+# Keep focus sane when windows/apps disappear.
 yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
 yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
 
-sudo yabai --load-sa
-
-# default layout (can be bsp, stack or float)
+# -----------------------------------------------------------------------------
+# Core layout: closest Yabai equivalent to AeroSpace tiles + auto orientation
+# -----------------------------------------------------------------------------
 yabai -m config layout bsp
-
-# New window spawns to the right if vertical split, or bottom if horizontal split
+yabai -m config split_type auto
 yabai -m config window_placement second_child
+yabai -m config window_insertion_point focused
+yabai -m config split_ratio 0.50
 
-# padding set to 0px
-yabai -m config top_padding 3
-yabai -m config bottom_padding 4
-yabai -m config left_padding 4
-yabai -m config right_padding 4
-yabai -m config window_gap 5
+# AeroSpace-ish gaps: inner 12, outer ~8/9
+yabai -m config top_padding 8
+yabai -m config bottom_padding 8
+yabai -m config left_padding 9
+yabai -m config right_padding 9
+yabai -m config window_gap 12
 
-# set mouse follows focus mode (default: off)
+# AeroSpace moves mouse to focused window/monitor. Yabai equivalent:
 yabai -m config mouse_follows_focus on
-
-# modify window shadows (default: on, options: on, off, float)
-# example: show shadows only for floating windows
-yabai -m config window_shadow float
-
-# window opacity (default: off)
-yabai -m config window_opacity off
-yabai -m config active_window_opacity 0.90
-yabai -m config normal_window_opacity 0.80
-
-# set focus follows mouse mode (default: off, options: off, autoraise, autofocus)
 yabai -m config focus_follows_mouse off
 
-# modifier for clicking and dragging with mouse
+# Multi-monitor behavior.
+yabai -m config display_arrangement_order horizontal
+yabai -m config window_origin_display focused
+
+# Mouse move/resize, similar to old config.
 yabai -m config mouse_modifier alt
-
-# set modifier + left-click drag to move window
 yabai -m config mouse_action1 move
-
-# set modifier + right-click drag to resize window
 yabai -m config mouse_action2 resize
+yabai -m config mouse_drop_action swap
 
-# when window is dropped in center of another window, swap them (on edges it will split it)
-yabai -m mouse_drop_action swap
+# Visuals. Shadows require scripting addition / partial SIP.
+yabai -m config window_shadow float 2>/dev/null
+yabai -m config window_opacity off
 
-# yabai -m rule --add app="^Spotify$" manage=off sub-layer=below
-yabai -m rule --add app="^App Store$" manage=off sub-layer=below
-yabai -m rule --add app="^Finder$" manage=off sub-layer=below
-yabai -m rule --add app="^System Settings$" manage=off sub-layer=below
-yabai -m rule --add app="^Raycast$" manage=off sub-layer=below
-yabai -m rule --add app="^Zoom Workplace$" manage=off sub-layer=below
-# yabai -m rule --add app="^Preview$" manage=off sub-layer=below
-yabai -m rule --add app="^Docker Desktop$" manage=off sub-layer=below
-yabai -m rule --add app="^TinkerTool$" manage=off sub-layer=below
-yabai -m rule --add app="^Mac Mouse Fix$" manage=off sub-layer=below
-yabai -m rule --add app="^Bartender$" manage=off sub-layer=below
-yabai -m rule --add app="^Dropzone 4$" manage=off sub-layer=below
-yabai -m rule --add app="^Shottr$" manage=off sub-layer=below
-yabai -m rule --add app="^Hidden Bar$" manage=off sub-layer=below
-yabai -m rule --add app="^AlDente$" manage=off sub-layer=below
-yabai -m rule --add app="^Notes$" manage=off sub-layer=below
-yabai -m rule --add app="^FaceTime$" manage=off sub-layer=below
-yabai -m rule --add app="^Todoist$" manage=off sub-layer=above opacity=1.00
-yabai -m rule --add app="^Activity Monitor$" manage=off sub-layer=below
-yabai -m rule --add app="^VMWare Fusion$" manage=off sub-layer=below
+# -----------------------------------------------------------------------------
+# Space labels: Yabai labels are aliases over real macOS Mission Control spaces.
+# Create enough spaces manually first, or labels after the missing spaces will fail.
+# -----------------------------------------------------------------------------
+label_space() {
+  yabai -m space "$1" --label "$2" 2>/dev/null
+}
+
+label_space 1 1
+label_space 2 2
+label_space 3 3
+label_space 4 4
+label_space 5 5
+label_space 6 6
+label_space 7 7
+label_space 8 8
+label_space 9 D
+label_space 10 F
+label_space 11 M
+label_space 12 W
+label_space 13 S
+label_space 14 P
+label_space 15 O
+label_space 16 X
+label_space 17 Z
+label_space 18 C
+label_space 19 T
+label_space 20 V
+label_space 21 B
+
+# -----------------------------------------------------------------------------
+# App routing ported from AeroSpace on-window-detected rules.
+# -----------------------------------------------------------------------------
+yabai -m rule --add label=arc app="^Arc$" space=1
+yabai -m rule --add label=antigravity app="^Antigravity$" space=2
+yabai -m rule --add label=cursor app="^Cursor$" space=2
+yabai -m rule --add label=rider app="^Rider$" space=2
+yabai -m rule --add label=wezterm app="^WezTerm$" space=3
+yabai -m rule --add label=cmux app="^cmux$" space=3
+yabai -m rule --add label=finder-route app="^Finder$" space=F
+yabai -m rule --add label=discord app="^Discord$" space=D
+yabai -m rule --add label=messages app="^Messages$" space=M
+yabai -m rule --add label=slack app="^Slack$" space=W
+yabai -m rule --add label=spotify app="^Spotify$" space=S
+yabai -m rule --add label=parsec app="^Parsec$" space=P
+yabai -m rule --add label=codex app="^Codex$" space=X
+yabai -m rule --add label=claude app="^Claude$" space=C
+yabai -m rule --add label=obsidian app="^Obsidian$" space=O
+yabai -m rule --add label=zed app="^Zed$" space=Z
+
+# -----------------------------------------------------------------------------
+# Floating / unmanaged apps from AeroSpace plus your old Yabai exceptions.
+# -----------------------------------------------------------------------------
+yabai -m rule --add label=app-store app="^App Store$" manage=off
+yabai -m rule --add label=finder-float app="^Finder$" manage=off
+yabai -m rule --add label=system-settings app="^System Settings$" manage=off
+yabai -m rule --add label=raycast app="^Raycast$" manage=off
+yabai -m rule --add label=zoom app="^Zoom Workplace$" manage=off
+yabai -m rule --add label=docker app="^Docker Desktop$" manage=off
+yabai -m rule --add label=tinkertool app="^TinkerTool$" manage=off
+yabai -m rule --add label=mac-mouse-fix app="^Mac Mouse Fix$" manage=off
+yabai -m rule --add label=bartender app="^Bartender$" manage=off
+yabai -m rule --add label=dropzone app="^Dropzone 4$" manage=off
+yabai -m rule --add label=shottr app="^Shottr$" manage=off
+yabai -m rule --add label=hidden-bar app="^Hidden Bar$" manage=off
+yabai -m rule --add label=aldente app="^AlDente$" manage=off
+yabai -m rule --add label=notes app="^Notes$" manage=off
+yabai -m rule --add label=facetime app="^FaceTime$" manage=off
+yabai -m rule --add label=todoist app="^Todoist$" manage=off opacity=1.00 2>/dev/null || yabai -m rule --add label=todoist-basic app="^Todoist$" manage=off
+yabai -m rule --add label=activity-monitor app="^Activity Monitor$" manage=off
+yabai -m rule --add label=vmware app="^VMWare Fusion$" manage=off
+yabai -m rule --add label=fork app="^Fork$" manage=off
+yabai -m rule --add label=structured app="^Structured$" manage=off
+yabai -m rule --add label=simulator app="^Simulator$" manage=off
+yabai -m rule --add label=preview app="^Preview$" manage=off
+yabai -m rule --add label=appcleaner app="^AppCleaner$" manage=off
+yabai -m rule --add label=cap app="^Cap$" manage=off
+
+# Wispr Flow status bubble. sticky/sub-layer require scripting addition; fallback keeps it floating.
+yabai -m rule --add label=wispr-status app="^Wispr Flow$" title="^Status$" manage=off sticky=on sub-layer=above 2>/dev/null || \
+  yabai -m rule --add label=wispr-status-basic app="^Wispr Flow$" title="^Status$" manage=off
 
 echo "yabai configuration loaded.."
