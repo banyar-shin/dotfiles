@@ -251,11 +251,20 @@ if.app-name-regex-substring = 'zed'
 run = 'move-node-to-workspace Z'
 
 [[on-window-detected]]
+if.app-name-regex-substring = 'wispr flow'
+if.window-title-regex-substring = 'status'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-name-regex-substring = 'facetime'
 run = 'layout floating'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'fork'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'structured'
 run = 'layout floating'
 
 [[on-window-detected]]
