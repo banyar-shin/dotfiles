@@ -41,6 +41,8 @@
 .config/.mcp.json
 
 # Per-machine / app-managed
+.claude/
+.codex/
 .config/theme-mode
 .config/opencode/node_modules
 .config/opencode/bun.lock

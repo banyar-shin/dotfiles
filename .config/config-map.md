@@ -83,20 +83,6 @@ For exclusion rules (what's intentionally NOT tracked and why), see [`~/.gitigno
 |---|---|
 | `.config/p10k/mac.p10k.zsh` | powerlevel10k config (zsh prompt; legacy — fish uses oh-my-posh) |
 
-## AI tooling
-
-| Path | Purpose |
-|---|---|
-| `.claude/settings.json` | Claude Code settings — model, hooks, permissions |
-| `.claude/rules/common/*` | Shared coding/git/testing/security rules (loaded into every Claude Code session) |
-| `.claude/rules/python/*` | Python-specific rules |
-| `.claude/rules/typescript/*` | TypeScript-specific rules |
-| `.codex/config.toml` | Codex CLI config |
-| `.codex/AGENTS.md` | Codex agent prompt |
-| `.codex/rules/default.rules` | Codex rules |
-| `.codex/skills/{chronicle,pdf,playwright}/` | Codex skills (incl. PDF + Playwright tools) |
-| `.codex/.gitignore` | Codex local-only ignores |
-
 ## Tooling — cmux
 
 | File | Purpose |
@@ -154,6 +140,8 @@ For exclusion rules (what's intentionally NOT tracked and why), see [`~/.gitigno
 | **Notion API key** (`~/.config/notion/api_key`) | Bootstrap: create new integration at notion.so |
 | **X/Twitter** (`~/.xurl`) | OAuth tokens for `xurl` CLI |
 | **AWS** (`~/.boto`, `~/.aws/`) | Credentials |
+| **Claude Code config** (`~/.claude/`) | Machine-local settings, rules, sessions, hooks, MCP config, and auth-adjacent state |
+| **Codex config** (`~/.codex/`) | Machine-local model/plugin/project trust settings, skills, sessions, and runtime paths |
 | **Claude state** (`~/.claude.json` + backups) | Per-machine session state, MCP server tokens |
 | **Shell history** (`.bash_history`, `.zsh_history`, `.python_history`, etc.) | Personal command history with potentially sensitive arguments |
 | **zsh completion caches** (`.zcompdump*`) | Auto-regenerated on first shell start |

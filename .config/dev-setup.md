@@ -19,7 +19,7 @@ macOS (Apple Silicon). Notes on the moving parts.
 
 ## Runtimes
 
-- **Node** — `~/.local/share/nvm/v22.22.0/` (jorgebucaran/nvm.fish layout). Pinned via `nvm_default_version`.
+- **Node** — `~/.local/share/nvm/v22.22.2/` (jorgebucaran/nvm.fish layout). Pinned via `nvm_default_version`.
 - **Python** — miniconda3 at `~/miniconda3/`. Per-directory env auto-switch via `env-switch.fish` (currently disabled — slow conda subprocess on shell start).
 - **Rust** — `~/.cargo/`, sourced from `~/.cargo/env`.
 - **pnpm** — `~/Library/pnpm` (Node package manager of choice).
@@ -88,9 +88,10 @@ Conventions: full-path wikilinks, YAML frontmatter required in `second-brain/`, 
 
 ## AI Tooling
 
-- **Claude Code** — primary AI dev tool. Settings at `~/.claude/settings.json`; auto-memory at `~/.claude/projects/-Users-banyar-ego/memory/`; rules at `~/.claude/rules/`.
+- **Claude Code** — primary AI dev tool. `~/.claude/` is machine-local and intentionally not tracked here.
+- **Codex** — `~/.codex/` is machine-local and intentionally not tracked here.
 - **OpenClaw** — agent workspace at `~/.openclaw/workspace/`, gateway on `:18789`.
-- **ruflo** — MCP integration for memory/swarm coordination (see `~/.claude/CLAUDE.md`).
+- **ruflo** — MCP integration for memory/swarm coordination when configured locally.
 
 ## Other
 
@@ -148,7 +149,7 @@ chsh -s /opt/homebrew/bin/fish
 
 ```bash
 # Node via nvm.fish
-fish -c "nvm install 22.22.0 && nvm use 22.22.0 && set -U nvm_default_version 22.22.0"
+fish -c "nvm install 22.22.2 && nvm use 22.22.2 && set -U nvm_default_version 22.22.2"
 
 # Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -183,6 +184,7 @@ Nothing here is tracked in the dotfiles repo. Run these on the new machine:
 | fly.io | `flyctl auth login` |
 | Cloudflare | `wrangler login` (if installed) |
 | Anthropic API | export `ANTHROPIC_API_KEY` (rotate first if compromised) |
+| Claude/Codex | Install/sign in per machine; keep `~/.claude/` and `~/.codex/` out of dotfiles |
 
 ### 7. App-managed sync (sign in, not config-tracked)
 

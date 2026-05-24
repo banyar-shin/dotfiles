@@ -8,4 +8,4 @@ SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ejorgebucaran/nvm\x2efish\x1ejorge
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR fish_features:\x1d
 SETUVAR fish_user_paths:/Users/banyar\x2dego/\x2eantigravity/antigravity/bin\x1e/Users/banyar\x2dego/\x2elocal/bin\x1e/opt/homebrew/opt/openjdk/bin\x1e/opt/homebrew/sbin\x1e/opt/homebrew/bin
-SETUVAR nvm_default_version:v22\x2e22\x2e0
+SETUVAR nvm_default_version:22\x2e22\x2e2
