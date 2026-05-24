@@ -3,13 +3,66 @@ model_context_window = 1000000
 model_reasoning_effort = "high"
 sandbox_mode = "workspace-write"
 personality = "friendly"
-notify = ["/Users/banyar/.codex/plugins/cache/openai-bundled/computer-use/1.0.758/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
 
-[projects."/Users/banyar/git-repos/personal/career-ops"]
+notify = ["/Users/banyar-ego/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
+
+[projects."/Users/banyar-ego/git-repos/ego/chat-app"]
+trust_level = "trusted"
+
+[projects."/Users/banyar-ego"]
+trust_level = "trusted"
+
+[projects."/Users/banyar-ego/git-repos/ego/character-platform"]
+trust_level = "trusted"
+
+[projects."/private/tmp/dogs-site.WkoUth"]
+trust_level = "trusted"
+
+[projects."/Users/banyar-ego/git-repos/ego/character-platform-plugin"]
+trust_level = "trusted"
+
+[projects."/Users/banyar-ego/git-repos/ego/gemma4-eval"]
+trust_level = "trusted"
+
+[projects."/Users/banyar-ego/git-repos/ego"]
+trust_level = "trusted"
+
+[projects."/Users/banyar-ego/git-repos/ego/workspace"]
+trust_level = "trusted"
+
+[projects."/Users/banyar-ego/git-repos/ego/workspace/gephi"]
+trust_level = "trusted"
+
+[projects."/private/tmp/horse-lumina"]
+trust_level = "trusted"
+
+[projects."/Users/banyar-ego/git-repos/afterquery/aq-swe-take-home-tb-v2"]
+trust_level = "trusted"
+
+[projects."/Users/banyar-ego/git-repos/immvrse"]
+trust_level = "trusted"
+
+[projects."/Users/banyar-ego/Documents/Codex/2026-05-04/hello"]
+trust_level = "trusted"
+
+[projects."/Users/banyar-ego/Documents/Codex/2026-05-09/so-our-application-was-submitted-dec"]
+trust_level = "trusted"
+
+[projects."/Users/banyar-ego/Documents/Codex/2026-05-11/new-project-need-to-brainstorm-first"]
+trust_level = "trusted"
+
+[projects."/Users/banyar-ego/Documents/Codex/2026-05-11/im-at-157-lbs-and-5"]
+trust_level = "trusted"
+
+[projects."/Users/banyar-ego/Documents/Codex/2026-05-19/im-getting-laid-off-and-this"]
 trust_level = "trusted"
 
 [notice.model_migrations]
 "gpt-5.3-codex" = "gpt-5.4"
+
+[tui]
+status_line = ["model-with-reasoning", "current-dir", "context-used"]
+status_line_use_colors = true
 
 [tui.model_availability_nux]
 "gpt-5.3-codex-spark" = 2
@@ -30,9 +83,6 @@ enabled = true
 [plugins."google-drive@openai-curated"]
 enabled = true
 
-[plugins."browser-use@openai-bundled"]
-enabled = true
-
 [plugins."documents@openai-primary-runtime"]
 enabled = true
 
@@ -42,22 +92,28 @@ enabled = true
 [plugins."presentations@openai-primary-runtime"]
 enabled = true
 
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."chrome@openai-bundled"]
+enabled = true
+
 # BEGIN OMC MANAGED MCP REGISTRY
 
 [mcp_servers.ruflo]
 command = "npx"
-args = ["claude-flow@latest", "mcp", "start"]
+args = ["claude-flow@3.6.27", "mcp", "start"]
 startup_timeout_sec = 15
 
 [marketplaces.openai-bundled]
-last_updated = "2026-05-04T00:27:50Z"
+last_updated = "2026-05-19T08:18:33Z"
 source_type = "local"
-source = "/Users/banyar/.codex/.tmp/bundled-marketplaces/openai-bundled"
+source = "/Users/banyar-ego/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-05-04T00:32:12Z"
+last_updated = "2026-05-19T09:06:33Z"
 source_type = "local"
-source = "/Users/banyar/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
+source = "/Users/banyar-ego/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 
 [features]
 memories = true

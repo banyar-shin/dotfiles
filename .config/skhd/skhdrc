@@ -1,86 +1,100 @@
-# ----------------------------- YABAI COMMANDS -----------------------------
+# skhd config rebuilt to approximate ~/.aerospace.toml
+# Start with: brew install skhd && skhd --start-service
 
-# stop/start/restart yabai
-# ctrl + alt - q : yabai --stop-service
-# ctrl + alt - s : yabai --start-service
+# -----------------------------------------------------------------------------
+# Service controls
+# -----------------------------------------------------------------------------
+ctrl + alt - r : yabai --restart-service; skhd --restart-service
+ctrl + alt - q : yabai --stop-service
+ctrl + alt - s : yabai --start-service
 
-# ctrl + alt - r : yabai --restart-service
+# -----------------------------------------------------------------------------
+# Workspace / space focus, matching AeroSpace ctrl-* bindings
+# -----------------------------------------------------------------------------
+ctrl - 1 : yabai -m space --focus 1
+ctrl - 2 : yabai -m space --focus 2
+ctrl - 3 : yabai -m space --focus 3
+ctrl - 4 : yabai -m space --focus 4
+ctrl - 5 : yabai -m space --focus 5
+ctrl - 6 : yabai -m space --focus 6
+ctrl - 7 : yabai -m space --focus 7
+ctrl - 8 : yabai -m space --focus 8
+ctrl - f : yabai -m space --focus F
 
-# ----------------------------- SPACE COMMANDS -----------------------------
+ctrl - h : yabai -m space --focus prev || yabai -m space --focus last
+ctrl - l : yabai -m space --focus next || yabai -m space --focus first
 
-# Focus previous space by mission-control index
-# ctrl - h : yabai -m space --focus prev || yabai -m space --focus last
+# Monitor focus
+ctrl - left  : yabai -m display --focus prev || yabai -m display --focus last
+ctrl - right : yabai -m display --focus next || yabai -m display --focus first
 
-# Focus next space by mission-control index
-# ctrl - l : yabai -m space --focus next || yabai -m space --focus first
+# -----------------------------------------------------------------------------
+# Move focused window to workspace and follow it, matching AeroSpace
+# move-node-to-workspace --focus-follows-window
+# -----------------------------------------------------------------------------
+ctrl + shift - 1 : yabai -m window --space 1; yabai -m space --focus 1
+ctrl + shift - 2 : yabai -m window --space 2; yabai -m space --focus 2
+ctrl + shift - 3 : yabai -m window --space 3; yabai -m space --focus 3
+ctrl + shift - 4 : yabai -m window --space 4; yabai -m space --focus 4
+ctrl + shift - 5 : yabai -m window --space 5; yabai -m space --focus 5
+ctrl + shift - 6 : yabai -m window --space 6; yabai -m space --focus 6
+ctrl + shift - 7 : yabai -m window --space 7; yabai -m space --focus 7
+ctrl + shift - 8 : yabai -m window --space 8; yabai -m space --focus 8
 
-# Focus space with mission-control
-# ctrl - 1 : yabai -m space --focus 1
-# ctrl - 2 : yabai -m space --focus 2
-# ctrl - 3 : yabai -m space --focus 3
-# ctrl - 4 : yabai -m space --focus 4
-# ctrl - 5 : yabai -m space --focus 5
+ctrl + shift - d : yabai -m window --space D; yabai -m space --focus D
+ctrl + shift - m : yabai -m window --space M; yabai -m space --focus M
+ctrl + shift - w : yabai -m window --space W; yabai -m space --focus W
+ctrl + shift - f : yabai -m window --space F; yabai -m space --focus F
+ctrl + shift - p : yabai -m window --space P; yabai -m space --focus P
+ctrl + shift - s : yabai -m window --space S; yabai -m space --focus S
+ctrl + shift - t : yabai -m window --space T; yabai -m space --focus T
+ctrl + shift - v : yabai -m window --space V; yabai -m space --focus V
+ctrl + shift - b : yabai -m window --space B; yabai -m space --focus B
+ctrl + shift - o : yabai -m window --space O; yabai -m space --focus O
+ctrl + shift - x : yabai -m window --space X; yabai -m space --focus X
+ctrl + shift - z : yabai -m window --space Z; yabai -m space --focus Z
+ctrl + shift - c : yabai -m window --space C; yabai -m space --focus C
 
-# Focus displays
-# ctrl - left : yabai -m display --focus west
-# ctrl - right : yabai -m display --focus east
+ctrl + shift - h : yabai -m window --space prev; yabai -m space --focus prev
+ctrl + shift - l : yabai -m window --space next; yabai -m space --focus next
 
-# move window to space #
-# ctrl + shift - 1 : yabai -m window --space 1; yabai -m window --focus recent
-# ctrl + shift - 2 : yabai -m window --space 2; yabai -m window --focus recent
-# ctrl + shift - 3 : yabai -m window --space 3; yabai -m window --focus recent
-# ctrl + shift - 4 : yabai -m window --space 4; yabai -m window --focus recent
-# ctrl + shift - 5 : yabai -m window --space 5; yabai -m window --focus recent
+# Move window to monitor and follow it
+ctrl + shift - left  : yabai -m window --display prev; yabai -m display --focus prev
+ctrl + shift - right : yabai -m window --display next; yabai -m display --focus next
 
-# move window to prev and next space
-# ctrl + shift - h : yabai -m window --space prev; yabai -m space --focus prev
-# ctrl + shift - l : yabai -m window --space next; yabai -m space --focus next
+# -----------------------------------------------------------------------------
+# Window focus/navigation. These are extra quality-of-life bindings from your
+# old Yabai workflow; AeroSpace config currently does not bind alt-h/j/k/l.
+# -----------------------------------------------------------------------------
+alt - h : yabai -m window --focus west
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - l : yabai -m window --focus east
 
-# move window to display left and right
-# ctrl + shift - left : yabai -m window --display west; yabai -m display --focus west;
-# ctrl + shift - right : yabai -m window --display east; yabai -m display --focus east;
+# Move/reinsert focused window in tree. Closest Yabai equivalent to AeroSpace move.
+alt + shift - h : yabai -m window --warp west
+alt + shift - j : yabai -m window --warp south
+alt + shift - k : yabai -m window --warp north
+alt + shift - l : yabai -m window --warp east
 
-# ----------------------------- WITHIN A SPACE COMMANDS -----------------------------
+# Layouts / floating, approximating AeroSpace bindings
+# skhd hex keycodes: 0x2C=/, 0x2B=,
+alt - 0x2C : yabai -m space --layout bsp
+alt - 0x2B : yabai -m space --layout stack
+alt - r : yabai -m space --rotate 270
+alt - f : yabai -m window --toggle float --grid 4:4:1:1:2:2
 
-# change window focus within space
-# alt - j : yabai -m window --focus south
-# alt - k : yabai -m window --focus north
-# alt - h : yabai -m window --focus west
-# alt - l : yabai -m window --focus east
+# Resize, approximating AeroSpace smart resize +/-50
+# skhd hex keycodes: 0x1B=-, 0x18==
+alt + shift - 0x1B : yabai -m window --ratio rel:-0.05
+alt + shift - 0x18 : yabai -m window --ratio rel:0.05
 
-# rotate layout clockwise
-# alt - r : yabai -m space --rotate 270
+# Approximation of AeroSpace join-with: set insertion/split direction.
+cmd + alt - h : yabai -m window --insert west
+cmd + alt - j : yabai -m window --insert south
+cmd + alt - k : yabai -m window --insert north
+cmd + alt - l : yabai -m window --insert east
 
-# toggle window float
-# alt - f : yabai -m window --toggle float --grid 4:4:1:1:2:2
-
-# maximize a window
-# alt - return : yabai -m window --toggle zoom-fullscreen
-
-# balance out tree of windows (resize to occupy same area)
-# alt - e : yabai -m space --balance
-
-# swap windows
-# alt + shift - j : yabai -m window --swap south
-# alt + shift - k : yabai -m window --swap north
-# alt + shift - h : yabai -m window --swap west
-# alt + shift - l : yabai -m window --swap east
-
-# move window
-# alt + shift - a : yabai -m window --move rel:-20:0
-# alt + shift - s : yabai -m window --move rel:0:20
-# alt + shift - w : yabai -m window --move rel:0:-20
-# alt + shift - d : yabai -m window --move rel:20:0
-
-# adjust window size
-# cmd + alt - h : yabai -m window --resize left:-20:0 || yabai -m window --resize right:-20:0
-# cmd + alt - j : yabai -m window --resize bottom:0:20
-# cmd + alt - k : yabai -m window --resize top:0:-20 || yabai -m window --resize bottom:0:-20
-# cmd + alt - l : yabai -m window --resize right:20:0
-
-# adjust window opacity
-# alt - o : yabai -m window --opacity 1.0
-# alt + shift - o : yabai -m window --opacity 0.0
-
-# launch apps
-# ctrl + alt + cmd + shift - return : open -na kitty
+# Misc useful Yabai operations
+alt - e : yabai -m space --balance
+alt - return : yabai -m window --toggle zoom-fullscreen

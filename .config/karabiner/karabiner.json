@@ -51,6 +51,28 @@
                     }
                 ]
             },
+            "devices": [
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 61139,
+                        "vendor_id": 1240
+                    },
+                    "ignore": false,
+                    "ignore_vendor_events": true,
+                    "treat_as_built_in_keyboard": true
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 61139,
+                        "vendor_id": 1240
+                    },
+                    "ignore_vendor_events": true,
+                    "treat_as_built_in_keyboard": true
+                }
+            ],
             "name": "Default profile",
             "selected": true,
             "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
