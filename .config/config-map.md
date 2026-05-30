@@ -98,13 +98,6 @@ For exclusion rules (what's intentionally NOT tracked and why), see [`~/.gitigno
 | `.config/workspaces/parse-projects.js` | Shared TOML parser |
 | `.config/workspaces/sync-obsidian.js` | Syncs `[[projects]]` to Obsidian vault |
 
-## `gyst` (productivity tooling)
-
-| Path | Purpose |
-|---|---|
-| `.config/gyst/extract-hook.js` | Hook for `gyst` extraction |
-| `.config/gyst/skills/{heartbeat,lookup,reflect,synthesize,update,wrap-up}/SKILL.md` | gyst skill definitions |
-
 ## Audio visualizer
 
 | Path | Purpose |
