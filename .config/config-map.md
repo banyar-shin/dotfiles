@@ -66,10 +66,11 @@ For exclusion rules (what's intentionally NOT tracked and why), see [`~/.gitigno
 
 | File | Purpose |
 |---|---|
-| `.gitconfig` | Global git config; per-directory `includeIf` for work email |
+| `.gitconfig` | Global git config; includes work identity for `_ego` checkouts |
 | `.gitignore` | Global gitignore for the dotfiles bare repo (secrets, history, caches) |
 | `.gitmodules` | Submodule pointer (nvim) |
 | `.config/git/ignore` | Global gitignore-of-ignores used by `core.excludesfile` |
+| `.config/git/ego.gitconfig` | Work git identity included for `~/git-repos/work/_ego/` |
 
 ## Package management
 
@@ -110,7 +111,7 @@ For exclusion rules (what's intentionally NOT tracked and why), see [`~/.gitigno
 | Path | Purpose |
 |---|---|
 | `.config/neofetch/config.conf` + `images/` | Custom neofetch image + config |
-| `.config/wallpapers/*` | 19 desktop wallpapers (gruvbox set, etc.) |
+| `.config/wallpapers/*` | 18 desktop wallpapers (gruvbox set, etc.) |
 
 ## Docs (this repo)
 

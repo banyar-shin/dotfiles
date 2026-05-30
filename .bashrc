@@ -37,12 +37,12 @@ bind '"\e[27;2;13~": accept-line' 2>/dev/null
 # ─── Cargo / Rust (conf.d/rustup.fish) ──────────────────────────────────────
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
-# ─── nvm (jorgebucaran/nvm.fish layout, default version pin v22.22.0) ───────
+# ─── nvm (jorgebucaran/nvm.fish layout, default version pin v22.22.2) ───────
 # Fish uses XDG_DATA_HOME/nvm; reuse that install for bash.
 NVM_DIR="$HOME/.local/share/nvm"
 export NVM_DIR
-if [ -d "$NVM_DIR/v22.22.0/bin" ]; then
-    _path_prepend "$NVM_DIR/v22.22.0/bin"
+if [ -d "$NVM_DIR/v22.22.2/bin" ]; then
+    _path_prepend "$NVM_DIR/v22.22.2/bin"
     export PATH
 fi
 
@@ -108,7 +108,7 @@ tmux-ego() {
         if [ -n "$TMUX" ]; then tmux switch-client -t ego
         else tmux attach -t ego; fi
     else
-        tmux new -s ego -c ~/git-repos/ego
+        tmux new -s ego -c ~/git-repos/work/_ego
     fi
 }
 
@@ -118,15 +118,6 @@ tmux-personal() {
         else tmux attach -t personal; fi
     else
         tmux new -s personal
-    fi
-}
-
-tmux-immvrse() {
-    if tmux has-session -t immvrse 2>/dev/null; then
-        if [ -n "$TMUX" ]; then tmux switch-client -t immvrse
-        else tmux attach -t immvrse; fi
-    else
-        tmux new -s immvrse -c ~/git-repos/immvrse
     fi
 }
 

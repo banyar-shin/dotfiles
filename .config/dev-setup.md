@@ -42,7 +42,7 @@ config push
 
 ### Git email routing
 
-Global email is `banyar.minshin@gmail.com`. Repos under `~/git-repos/ego/` switch to `banyar@ego.live` via `includeIf` in `.gitconfig`.
+Global email is `banyar.minshin@gmail.com`. Repos under `~/git-repos/work/_ego/` switch to `banyar@ego.live` via `.gitconfig` including `~/.config/git/ego.gitconfig`.
 
 ## Workspace System (`ws`)
 
@@ -75,23 +75,23 @@ Conventions: full-path wikilinks, YAML frontmatter required in `second-brain/`, 
 
 ```
 ~/git-repos/
-├── ego/              # EgoAI work (banyar@ego.live)
-├── immvrse/          # IMMVRSE-TECH
-├── personal/         # banyar-shin + _school/
-├── oss/              # third-party clones
-└── local-sandboxing/ # no-git experiments
+├── work/_ego/                     # EgoAI work (banyar@ego.live)
+├── personal/                      # personal projects and experiments
+├── career/                        # career/interview projects
+├── nexus/                         # Hermes/Nexus source checkout
+├── nexus-instance/                # mutable local Hermes/Nexus runtime state
+└── agent-first-workspace-starter/ # workspace starter/reference project
 ```
 
 ## tmux Session Helpers
 
-`tmux-ego`, `tmux-personal`, `tmux-immvrse`, `tmux-nexus` — attach if exists, else create with the right cwd. Switches client when already inside tmux.
+`tmux-ego`, `tmux-personal`, `tmux-nexus` — attach if exists, else create with the right cwd. Switches client when already inside tmux.
 
 ## AI Tooling
 
 - **Claude Code** — primary AI dev tool. `~/.claude/` is machine-local and intentionally not tracked here.
 - **Codex** — `~/.codex/` is machine-local and intentionally not tracked here.
 - **OpenClaw** — agent workspace at `~/.openclaw/workspace/`, gateway on `:18789`.
-- **ruflo** — MCP integration for memory/swarm coordination when configured locally.
 
 ## Other
 

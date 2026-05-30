@@ -37,7 +37,7 @@ function tmux-ego
             tmux attach -t ego
         end
     else
-        tmux new -s ego -c ~/git-repos/ego
+        tmux new -s ego -c ~/git-repos/work/_ego
     end
 end
 
@@ -69,18 +69,6 @@ end
 
 function nexus-claude
     ~/.local/bin/nexus-claude $argv
-end
-
-function tmux-immvrse
-    if tmux has-session -t immvrse 2>/dev/null
-        if set -q TMUX
-            tmux switch-client -t immvrse
-        else
-            tmux attach -t immvrse
-        end
-    else
-        tmux new -s immvrse -c ~/git-repos/immvrse
-    end
 end
 
 # Syntax highlighting + pager colors (inlined from fish 4.3 frozen-theme migration)
