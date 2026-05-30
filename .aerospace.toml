@@ -185,13 +185,23 @@ backspace = ['close-all-windows-but-current', 'mode main']
 # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 #s = ['layout sticky tiling', 'mode main']
 
+# ---------------------------
 # apps with custom workspaces
+# ---------------------------
 [[on-window-detected]]
 if.app-name-regex-substring = 'arc'
 run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'antigravity'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'claude'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'codex'
 run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
@@ -203,6 +213,10 @@ if.app-name-regex-substring = 'rider'
 run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
+if.app-name-regex-substring = 'zed'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
 if.app-name-regex-substring = 'wezterm'
 run = 'move-node-to-workspace 3'
 
@@ -211,48 +225,42 @@ if.app-name-regex-substring = 'cmux'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'finder'
-run = 'move-node-to-workspace F'
-
-[[on-window-detected]]
 if.app-name-regex-substring = 'discord'
 run = 'move-node-to-workspace D'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'finder'
+run = 'move-node-to-workspace F'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'messages'
 run = 'move-node-to-workspace M'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'slack'
-run = 'move-node-to-workspace W'
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'spotify'
-run = 'move-node-to-workspace S'
+if.app-name-regex-substring = 'obsidian'
+run = 'move-node-to-workspace O'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'parsec'
 run = 'move-node-to-workspace P'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'codex'
-run = 'move-node-to-workspace X'
+if.app-name-regex-substring = 'spotify'
+run = 'move-node-to-workspace S'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'claude'
-run = 'move-node-to-workspace C'
+if.app-name-regex-substring = 'reminders'
+run = 'move-node-to-workspace W'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'obsidian'
-run = 'move-node-to-workspace O'
+if.app-name-regex-substring = 'slack'
+run = 'move-node-to-workspace W'
 
-[[on-window-detected]]
-if.app-name-regex-substring = 'zed'
-run = 'move-node-to-workspace Z'
-
+# -------------------------
+# apps that spawn and float
+# -------------------------
 [[on-window-detected]]
 if.app-name-regex-substring = 'wispr flow'
-if.window-title-regex-substring = 'status'
 run = 'layout floating'
 
 [[on-window-detected]]
