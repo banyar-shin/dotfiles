@@ -59,12 +59,12 @@ preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 12
-inner.vertical = 12
-outer.left = 9
+inner.horizontal = 10
+inner.vertical = 10
+outer.left = 8
 outer.bottom = 8
 outer.top = 8
-outer.right = 9
+outer.right = 8
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -134,20 +134,15 @@ ctrl-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
 ctrl-shift-4 = 'move-node-to-workspace 4 --focus-follows-window'
 ctrl-shift-5 = 'move-node-to-workspace 5 --focus-follows-window'
 ctrl-shift-6 = 'move-node-to-workspace 6 --focus-follows-window'
-ctrl-shift-7 = 'move-node-to-workspace 7 --focus-follows-window'
-ctrl-shift-8 = 'move-node-to-workspace 8 --focus-follows-window'
+# ctrl-shift-7 = 'move-node-to-workspace 7 --focus-follows-window'
+# ctrl-shift-8 = 'move-node-to-workspace 8 --focus-follows-window'
 ctrl-shift-d = 'move-node-to-workspace D --focus-follows-window'
-ctrl-shift-m = 'move-node-to-workspace M --focus-follows-window'
-ctrl-shift-w = 'move-node-to-workspace W --focus-follows-window'
 ctrl-shift-f = 'move-node-to-workspace F --focus-follows-window'
+ctrl-shift-m = 'move-node-to-workspace M --focus-follows-window'
+ctrl-shift-o = 'move-node-to-workspace O --focus-follows-window'
 ctrl-shift-p = 'move-node-to-workspace P --focus-follows-window'
 ctrl-shift-s = 'move-node-to-workspace S --focus-follows-window'
-ctrl-shift-t = 'move-node-to-workspace T --focus-follows-window'
-ctrl-shift-v = 'move-node-to-workspace V --focus-follows-window'
-ctrl-shift-b = 'move-node-to-workspace B --focus-follows-window'
-ctrl-shift-o = 'move-node-to-workspace O --focus-follows-window'
-ctrl-shift-x = 'move-node-to-workspace X --focus-follows-window'
-ctrl-shift-z = 'move-node-to-workspace Z --focus-follows-window'
+ctrl-shift-w = 'move-node-to-workspace W --focus-follows-window'
 
 ctrl-shift-h = 'move-node-to-workspace prev --focus-follows-window'
 ctrl-shift-l = 'move-node-to-workspace next --focus-follows-window'
@@ -310,8 +305,8 @@ run = 'layout floating'
 4 = 'main'
 5 = ['secondary', 'main']
 6 = ['secondary', 'main']
-7 = ['secondary', 'main']
-8 = ['secondary', 'main']
+# 7 = ['secondary', 'main']
+# 8 = ['secondary', 'main']
 D = ['secondary', 'main']
 F = ['secondary', 'main']
 M = ['secondary', 'main']
