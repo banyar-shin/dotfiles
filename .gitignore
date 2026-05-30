@@ -1,0 +1,57 @@
+.cfg
+
+# macOS
+.DS_Store
+.localized
+
+# Shell + tool history
+.bash_history
+.zsh_history
+.python_history
+.mysql_history
+.lesshst
+.viminfo
+.node_repl_history
+.sqlite_history
+.psql_history
+
+# Auto-generated zsh caches
+.zcompdump*
+
+# Credentials and tokens — never track
+.npmrc
+.modal.toml
+.xurl
+.boto
+.aws/
+.netrc
+.config/gh/
+.config/github-copilot/
+.config/notion/api_key
+.config/raycast/
+.claude.json
+.claude.json.*
+.clawmetry-gateway.json
+
+# Misplaced / orphaned
+.zprofil
+.zshrc.pre-oh-my-zsh
+.config/.claude/
+.config/.claude-flow/
+.config/.mcp.json
+
+# Per-machine / app-managed
+.claude/
+.codex/
+.config/theme-mode
+.config/opencode/node_modules
+.config/opencode/bun.lock
+.config/LocalPrefs/
+.config/gtk-3.0/
+
+# Build artifacts in any tracked subdir
+node_modules/
+__pycache__/
+.venv/
+venv/
+*.pyc
