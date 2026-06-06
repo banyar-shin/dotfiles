@@ -121,11 +121,11 @@ ctrl-7 = 'workspace 7'
 ctrl-8 = 'workspace 8'
 ctrl-f = 'workspace F'
 
-ctrl-h = 'workspace prev'
-ctrl-l = 'workspace next'
+ctrl-h = 'focus left'
+ctrl-l = 'focus right'
 
-ctrl-right = 'focus-monitor next'
-ctrl-left = 'focus-monitor prev'
+ctrl-right = 'workspace next'
+ctrl-left = 'workspace prev'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 ctrl-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
@@ -245,11 +245,19 @@ run = 'move-node-to-workspace S'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'reminders'
-run = 'move-node-to-workspace W'
+run = ['move-node-to-workspace W', 'layout accordion horizontal']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'slack'
-run = 'move-node-to-workspace W'
+run = ['move-node-to-workspace W', 'layout accordion horizontal']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'calendar'
+run = ['move-node-to-workspace W', 'layout accordion horizontal']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'mail'
+run = ['move-node-to-workspace W', 'layout accordion horizontal']
 
 # -------------------------
 # apps that spawn and float
