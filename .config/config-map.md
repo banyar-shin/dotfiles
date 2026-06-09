@@ -35,14 +35,17 @@ For exclusion rules (what's intentionally NOT tracked and why), see [`~/.gitigno
 
 ## Terminals
 
+**Primary: cmux** (see "Tooling — cmux" below). WezTerm/kitty/ghostty are tracked alternatives, kept in case of a switch-back but not the daily driver.
+
 | File | Purpose |
 |---|---|
-| `.wezterm.lua` | WezTerm — Gruvbox Material, dark/light toggle, fonts |
+| `.config/cmux/cmux.json` | **cmux — primary terminal/workspace app** (file-managed overrides) |
 | `.tmux.conf` | tmux — extended keys, true color, key bindings |
-| `.config/kitty/kitty.conf.template` + `generate_kitty_conf.sh` | Kitty config generated from template |
+| `.wezterm.lua` | WezTerm (alternative) — Gruvbox Material, dark/light toggle, fonts |
+| `.config/kitty/kitty.conf.template` + `generate_kitty_conf.sh` | Kitty (alternative) config generated from template |
 | `.config/kitty/theme.conf` + `themes/` | Catppuccin Macchiato, Gruvbox Material, Rose Pine, Tokyonight |
 | `.config/kitty/kittybak.conf`, `kittyold.conf` | Backup variants |
-| `.config/ghostty/config` | Ghostty terminal (minimal) |
+| `.config/ghostty/config` | Ghostty (alternative) terminal (minimal) |
 
 ## Editor
 
@@ -54,11 +57,13 @@ For exclusion rules (what's intentionally NOT tracked and why), see [`~/.gitigno
 
 ## Window management (macOS)
 
+**Primary: AeroSpace.** yabai + skhd are tracked alternatives (kept in case of a switch-back), not the daily driver.
+
 | File | Purpose |
 |---|---|
-| `.aerospace.toml` | AeroSpace tiling WM — workspace/binding rules |
-| `.config/yabai/yabairc` | yabai scripting addition + layout |
-| `.config/skhd/skhdrc` | skhd keybindings for yabai |
+| `.aerospace.toml` | **AeroSpace tiling WM (primary)** — workspace/binding rules |
+| `.config/yabai/yabairc` | yabai (alternative) scripting addition + layout |
+| `.config/skhd/skhdrc` | skhd (alternative) keybindings for yabai |
 | `.config/karabiner/karabiner.json` | Karabiner-Elements key remaps |
 | `.config/karabiner/automatic_backups/` | Auto-saved snapshots (2024-09 / -10) |
 
@@ -76,13 +81,13 @@ For exclusion rules (what's intentionally NOT tracked and why), see [`~/.gitigno
 
 | File | Purpose |
 |---|---|
-| `.config/Brewfile` | `brew bundle install` — all taps, formulae, casks, mas apps |
+| `.config/Brewfile` | `brew bundle` — **hand-curated, minimal** set of taps/formulae/casks/vscode/cargo/uv/npm. Edit by hand; don't `brew bundle dump` over it. |
 
 ## Prompt
 
 | File | Purpose |
 |---|---|
-| `.config/p10k/mac.p10k.zsh` | powerlevel10k config (zsh prompt; legacy — fish uses oh-my-posh) |
+| `.config/p10k/mac.p10k.zsh` | powerlevel10k config — used for zsh sessions; fish uses oh-my-posh |
 
 ## Tooling — cmux
 
@@ -117,6 +122,7 @@ For exclusion rules (what's intentionally NOT tracked and why), see [`~/.gitigno
 
 | File | Purpose |
 |---|---|
+| `bootstrap.sh` | **One-command new-machine setup** (Homebrew → bare-repo checkout → Brewfile → fish + plugins → runtimes → verify). Idempotent. |
 | `.config/dev-setup.md` | Setup/bootstrap reference for this machine |
 | `.config/config-map.md` | This file — inventory of tracked configs |
 

@@ -12,10 +12,11 @@ macOS (Apple Silicon). Notes on the moving parts.
 
 ## Terminal & Editor
 
-- **WezTerm** — Gruvbox Material. `Alt+Shift+D` toggles dark/light (writes `~/.config/theme-mode`, `theme-reload` re-inits oh-my-posh).
+- **cmux** (manaflow-ai) — **primary terminal/workspace app.** Config at `~/.config/cmux/cmux.json` (JSONC; file-managed overrides take precedence over the in-app Settings). Pane focus bound to `opt+h/j/k/l`.
+- **WezTerm / kitty / ghostty** — *alternative terminals, still tracked but not primary.* Kept in case I switch back. WezTerm: Gruvbox Material, `Alt+Shift+D` toggles dark/light (writes `~/.config/theme-mode`, `theme-reload` re-inits oh-my-posh). kitty config is generated from a template via `generate_kitty_conf.sh`.
 - **Zed** — primary GUI editor; opened via `ws` (workspace manager).
 - **nvim** — `$EDITOR`/`$VISUAL`; terminal editing.
-- **Prompt:** oh-my-posh, themes at `~/.config/fish/themes/custom{,-light}.omp.json`.
+- **Prompt:** oh-my-posh (fish), themes at `~/.config/fish/themes/custom{,-light}.omp.json`. powerlevel10k (`~/.config/p10k/`) kept for zsh sessions.
 
 ## Runtimes
 
@@ -104,6 +105,26 @@ Conventions: full-path wikilinks, YAML frontmatter required in `second-brain/`, 
 
 ## New Machine Bootstrap
 
+### The one-command path (preferred)
+
+Everything below (Homebrew → bare-repo checkout → Brewfile → fish + plugins →
+runtimes → verify) is automated by **`~/bootstrap.sh`** (tracked at the repo
+root). On a fresh machine:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/banyar-shin/dotfiles/main/bootstrap.sh | bash
+```
+
+The script is idempotent (safe to re-run) and honors `SKIP_BREW`,
+`SKIP_RUNTIMES`, `SKIP_CHSH`, `DOTFILES_REMOTE`, and `NODE_VERSION` env
+overrides. It does **not** handle credentials/app sign-ins — do step 6 & 7
+below by hand afterward.
+
+The manual steps below are the reference for what the script does (and for
+debugging when a step fails).
+
+### Manual steps (reference)
+
 Order matters — each step assumes the previous one is done.
 
 ### 1. Homebrew + Brewfile
@@ -117,7 +138,9 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 brew bundle --file=~/.config/Brewfile
 ```
 
-The `Brewfile` is generated via `brew bundle dump --file=~/.config/Brewfile --force`. Regenerate after installing new tools.
+The `Brewfile` is a **hand-curated, minimal** install set — not a raw `brew
+bundle dump`. Running `dump` re-adds every one-off experimental tool, so edit
+the file by hand to keep it deliberate. Add new keepers as you adopt them.
 
 ### 2. Dotfiles bare repo
 
@@ -196,8 +219,8 @@ Nothing here is tracked in the dotfiles repo. Run these on the new machine:
 | **Notion (app)** | Install, sign in |
 | **Slack** | Sign in to workspaces |
 | **Karabiner-Elements** | Installed by Brewfile; load `~/.config/karabiner/karabiner.json` via Preferences → Misc → Open config folder |
-| **Yabai/skhd** | After Brewfile: `yabai --install-service && yabai --start-service`, same for `skhd`. Grant Accessibility + SIP exception |
-| **AeroSpace** | Installed by Brewfile cask `nikitabobko/tap/aerospace`, reads `~/.aerospace.toml` |
+| **AeroSpace** (primary WM) | Installed by Brewfile cask `nikitabobko/tap/aerospace`, reads `~/.aerospace.toml`. Launch once, grant Accessibility. |
+| **Yabai/skhd** (alternative) | Configs tracked but not the daily driver. Only if switching off AeroSpace: `yabai --install-service && yabai --start-service`, same for `skhd`. Grant Accessibility + SIP exception. |
 
 ### 8. Verify
 
@@ -209,7 +232,8 @@ fish -c "type ws && type config && type tmux-personal"
 
 ### 9. Per-app config notes
 
-- **WezTerm** — Gruvbox Material is set by `~/.wezterm.lua`. `Alt+Shift+D` toggles dark/light. Theme state lives in `~/.config/theme-mode` (NOT tracked — local-only).
+- **cmux** (primary terminal) — settings live in the app; `~/.config/cmux/cmux.json` holds file-managed overrides (pane focus `opt+h/j/k/l`). On first launch cmux writes a `settings.json` template (not tracked — app/machine-local).
+- **WezTerm** (alternative) — Gruvbox Material set by `~/.wezterm.lua`. `Alt+Shift+D` toggles dark/light. Theme state lives in `~/.config/theme-mode` (NOT tracked — local-only).
 - **iTerm2 / Terminal.app** — not used; nothing to migrate.
 - **Touch ID for sudo** — re-add to `/etc/pam.d/sudo_local` after a major macOS upgrade.
 
