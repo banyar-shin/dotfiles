@@ -96,7 +96,9 @@ For exclusion rules (what's intentionally NOT tracked and why), see [`~/.gitigno
 | `.config/cmux/settings.json` | cmux Settings.app-managed config |
 | `.config/cmux/cmux.json` | cmux file-managed overrides (JSONC; takes precedence) |
 
-## Workspace system (`ws` command)
+## Workspace system (`ws` command) — experimental, not core
+
+Tracked but no longer part of the core workflow (see dev-setup.md). Safe to ignore or remove.
 
 | File | Purpose |
 |---|---|
@@ -132,7 +134,7 @@ For exclusion rules (what's intentionally NOT tracked and why), see [`~/.gitigno
 
 | What | Why |
 |---|---|
-| **Raycast** (`~/.config/raycast/`) | `config.json` is a bare auth token; `extensions/` is 55MB of per-machine installs. Raycast Pro syncs settings + extensions through its own cloud. On a new machine: install Raycast, sign in, sync runs automatically. |
+| **Raycast** config (`~/.config/raycast/`) | Raycast itself is a **core tool, installed via the Brewfile** (`cask "raycast"`). Only its local config stays out of git: `config.json` is a bare auth token and `extensions/` is 55MB of per-machine installs. Raycast Pro syncs settings + extensions through its own cloud — on a new machine, sign in and sync runs automatically. |
 | **GitHub CLI** (`~/.config/gh/`) | OAuth tokens. Bootstrap: `gh auth login` |
 | **GitHub Copilot** (`~/.config/github-copilot/`) | OAuth tokens. Bootstrap: open Copilot in editor, sign in |
 | **npm auth** (`~/.npmrc`) | Publish token. Bootstrap: `npm login` |

@@ -147,30 +147,28 @@ setup_fish() {
 
 # --- 5. runtimes ------------------------------------------------------------
 setup_runtimes() {
-  step "Runtimes (node / rust / conda / pnpm)"
+  step "Runtimes (node / pnpm; uv for Python)"
   if [ "${SKIP_RUNTIMES:-0}" = "1" ]; then warn "SKIP_RUNTIMES=1 — skipping"; return; fi
 
   info "Node $NODE_VERSION via nvm.fish..."
   fish -c "nvm install $NODE_VERSION; nvm use $NODE_VERSION; set -U nvm_default_version $NODE_VERSION" \
     || warn "nvm install failed — check nvm.fish plugin."
 
-  if [ ! -d "$HOME/.cargo" ]; then
-    info "Rust via rustup..."
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-  else
-    ok "Rust already installed (~/.cargo)"
-  fi
-
-  if [ ! -d "$HOME/miniconda3" ] && ! command -v conda >/dev/null 2>&1; then
-    info "Miniconda via brew cask..."
-    brew install --cask miniconda || warn "miniconda install failed — install manually if you need conda."
-    command -v conda >/dev/null 2>&1 && conda init fish bash zsh || true
-  else
-    ok "conda already present"
-  fi
-
   info "Enabling corepack (pnpm/yarn shims)..."
   corepack enable 2>/dev/null || warn "corepack enable failed — run it after node is on PATH."
+
+  # Python is project-based via uv (installed by the Brewfile). No global env.
+  if command -v uv >/dev/null 2>&1; then
+    ok "uv present — use 'uv venv' / 'uv sync' per project"
+  else
+    warn "uv not found — ensure the Brewfile step ran (brew install uv)"
+  fi
+
+  # Rust is optional. The dotfiles source ~/.cargo/env if it exists, but we do
+  # NOT install rustup here. Set it up by hand when a project needs it:
+  #   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  [ -d "$HOME/.cargo" ] && ok "Rust toolchain detected (~/.cargo)"
+
   ok "Runtimes done"
 }
 
@@ -191,8 +189,8 @@ verify() {
     brew bundle check --file="$HOME/.config/Brewfile" >/dev/null 2>&1 \
       && ok "Brewfile satisfied" || warn "Brewfile not fully satisfied (run: brew bundle --file=~/.config/Brewfile)"
   fi
-  fish -c "type -q ws; and type -q config" 2>/dev/null \
-    && ok "fish functions (ws, config) available" || warn "fish functions not loaded yet — open a new fish session"
+  fish -c "type -q config" 2>/dev/null \
+    && ok "fish 'config' function available" || warn "fish functions not loaded yet — open a new fish session"
 }
 
 main() {

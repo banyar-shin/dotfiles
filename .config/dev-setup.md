@@ -8,22 +8,22 @@ macOS (Apple Silicon). Notes on the moving parts.
 - **zsh** — fallback; `~/.zshrc` mirrors fish for tools that assume bash/zsh.
 - **bash** — `~/.bashrc` sourced by `~/.bash_profile`. macOS bash is 3.2; uses a plain PS1 fallback (oh-my-posh needs 4.2+).
 - **fish plugins** (fisher): `jorgebucaran/nvm.fish`, `jorgebucaran/autopair.fish`.
-- Conda is **lazy-loaded** in fish/bash (first `conda` call sources the hook).
+- Conda (legacy) is **lazy-loaded** in fish/bash if installed — Python is now uv project-based; the conda hook only matters on machines that still have miniconda.
 
 ## Terminal & Editor
 
 - **cmux** (manaflow-ai) — **primary terminal/workspace app.** Config at `~/.config/cmux/cmux.json` (JSONC; file-managed overrides take precedence over the in-app Settings). Pane focus bound to `opt+h/j/k/l`.
 - **WezTerm / kitty / ghostty** — *alternative terminals, still tracked but not primary.* Kept in case I switch back. WezTerm: Gruvbox Material, `Alt+Shift+D` toggles dark/light (writes `~/.config/theme-mode`, `theme-reload` re-inits oh-my-posh). kitty config is generated from a template via `generate_kitty_conf.sh`.
-- **Zed** — primary GUI editor; opened via `ws` (workspace manager).
+- **Zed** — primary GUI editor.
 - **nvim** — `$EDITOR`/`$VISUAL`; terminal editing.
 - **Prompt:** oh-my-posh (fish), themes at `~/.config/fish/themes/custom{,-light}.omp.json`. powerlevel10k (`~/.config/p10k/`) kept for zsh sessions.
 
 ## Runtimes
 
-- **Node** — `~/.local/share/nvm/v22.22.2/` (jorgebucaran/nvm.fish layout). Pinned via `nvm_default_version`.
-- **Python** — miniconda3 at `~/miniconda3/`. Per-directory env auto-switch via `env-switch.fish` (currently disabled — slow conda subprocess on shell start).
-- **Rust** — `~/.cargo/`, sourced from `~/.cargo/env`.
-- **pnpm** — `~/Library/pnpm` (Node package manager of choice).
+- **Node** (core) — `~/.local/share/nvm/v22.22.2/` (jorgebucaran/nvm.fish layout). Pinned via `nvm_default_version`.
+- **pnpm** (core) — `~/Library/pnpm`, enabled via corepack (Node package manager of choice).
+- **Python** (core) — **project-based via `uv`** (`uv venv` / `uv sync` per project). No global interpreter to manage. _Conda is no longer part of the core setup;_ `conda-lazy.fish` remains as legacy config in case a machine still has miniconda.
+- **Rust** (optional) — not installed by bootstrap. The shell sources `~/.cargo/env` **if present**, so install rustup by hand only when a project needs it: `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`.
 - **JDK** — `/opt/homebrew/opt/openjdk/bin`.
 
 ## Dotfiles (bare git repo)
@@ -45,7 +45,12 @@ config push
 
 Global email is `banyar.minshin@gmail.com`. Repos under `~/git-repos/work/_ego/` switch to `banyar@ego.live` via `.gitconfig` including `~/.config/git/ego.gitconfig`.
 
-## Workspace System (`ws`)
+## Workspace System (`ws`) — experimental, not core
+
+> An experiment I built and no longer rely on. The fish/zsh/bash functions and
+> `~/.config/workspaces/` files are still tracked, but `ws` is **not part of the
+> core workflow** and the bootstrap script does not depend on it. Documented
+> here for reference; safe to ignore (or delete) on a new machine.
 
 Source of truth: `~/.config/workspaces/*.toml`. Defined in fish, zsh, and bash (parity).
 
@@ -171,18 +176,17 @@ chsh -s /opt/homebrew/bin/fish
 ### 4. Runtimes
 
 ```bash
-# Node via nvm.fish
+# Node via nvm.fish (core)
 fish -c "nvm install 22.22.2 && nvm use 22.22.2 && set -U nvm_default_version 22.22.2"
 
-# Rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# pnpm / yarn shims via corepack (core)
+corepack enable
 
-# Miniconda
-brew install --cask miniconda   # or download installer
-conda init fish bash zsh
+# Python: project-based via uv (installed by the Brewfile) — nothing global.
+#   uv venv && uv sync       # per project
 
-# pnpm
-curl -fsSL https://get.pnpm.io/install.sh | sh -
+# Rust (optional, only if a project needs it):
+#   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
 ### 5. Editors
@@ -213,7 +217,7 @@ Nothing here is tracked in the dotfiles repo. Run these on the new machine:
 
 | App | Setup |
 |---|---|
-| **Raycast** | Install, sign in to Raycast Pro; settings + extensions sync automatically |
+| **Raycast** (core) | Installed by the Brewfile (`cask "raycast"`). Sign in to Raycast Pro — settings + extensions then sync automatically via the cloud (the local `~/.config/raycast/` is an auth token + ~55MB of per-machine extensions, so it stays out of git). |
 | **1Password** | Install, sign in; vaults sync from cloud |
 | **Obsidian** | Install; vault `chrono-brain` syncs via iCloud |
 | **Notion (app)** | Install, sign in |
@@ -227,7 +231,7 @@ Nothing here is tracked in the dotfiles repo. Run these on the new machine:
 ```bash
 config status                 # should be clean
 brew bundle check --file=~/.config/Brewfile
-fish -c "type ws && type config && type tmux-personal"
+fish -c "type config && type tmux-personal"
 ```
 
 ### 9. Per-app config notes
