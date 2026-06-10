@@ -8,21 +8,22 @@ macOS (Apple Silicon). Notes on the moving parts.
 - **zsh** — fallback; `~/.zshrc` mirrors fish for tools that assume bash/zsh.
 - **bash** — `~/.bashrc` sourced by `~/.bash_profile`. macOS bash is 3.2; uses a plain PS1 fallback (oh-my-posh needs 4.2+).
 - **fish plugins** (fisher): `jorgebucaran/nvm.fish`, `jorgebucaran/autopair.fish`.
-- Conda is **lazy-loaded** in fish/bash (first `conda` call sources the hook).
+- Conda (legacy) is **lazy-loaded** in fish/bash if installed — Python is now uv project-based; the conda hook only matters on machines that still have miniconda.
 
 ## Terminal & Editor
 
-- **WezTerm** — Gruvbox Material. `Alt+Shift+D` toggles dark/light (writes `~/.config/theme-mode`, `theme-reload` re-inits oh-my-posh).
-- **Zed** — primary GUI editor; opened via `ws` (workspace manager).
+- **cmux** (manaflow-ai) — **primary terminal/workspace app.** Config at `~/.config/cmux/cmux.json` (JSONC; file-managed overrides take precedence over the in-app Settings). Pane focus bound to `opt+h/j/k/l`.
+- **WezTerm / kitty / ghostty** — *alternative terminals, still tracked but not primary.* Kept in case I switch back. WezTerm: Gruvbox Material, `Alt+Shift+D` toggles dark/light (writes `~/.config/theme-mode`, `theme-reload` re-inits oh-my-posh). kitty config is generated from a template via `generate_kitty_conf.sh`.
+- **Zed** — primary GUI editor.
 - **nvim** — `$EDITOR`/`$VISUAL`; terminal editing.
-- **Prompt:** oh-my-posh, themes at `~/.config/fish/themes/custom{,-light}.omp.json`.
+- **Prompt:** oh-my-posh (fish), themes at `~/.config/fish/themes/custom{,-light}.omp.json`. powerlevel10k (`~/.config/p10k/`) kept for zsh sessions.
 
 ## Runtimes
 
-- **Node** — `~/.local/share/nvm/v22.22.2/` (jorgebucaran/nvm.fish layout). Pinned via `nvm_default_version`.
-- **Python** — miniconda3 at `~/miniconda3/`. Per-directory env auto-switch via `env-switch.fish` (currently disabled — slow conda subprocess on shell start).
-- **Rust** — `~/.cargo/`, sourced from `~/.cargo/env`.
-- **pnpm** — `~/Library/pnpm` (Node package manager of choice).
+- **Node** (core) — `~/.local/share/nvm/v22.22.2/` (jorgebucaran/nvm.fish layout). Pinned via `nvm_default_version`.
+- **pnpm** (core) — `~/Library/pnpm`, enabled via corepack (Node package manager of choice).
+- **Python** (core) — **project-based via `uv`** (`uv venv` / `uv sync` per project). No global interpreter to manage. _Conda is no longer part of the core setup;_ `conda-lazy.fish` remains as legacy config in case a machine still has miniconda.
+- **Rust** (optional) — not installed by bootstrap. The shell sources `~/.cargo/env` **if present**, so install rustup by hand only when a project needs it: `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`.
 - **JDK** — `/opt/homebrew/opt/openjdk/bin`.
 
 ## Dotfiles (bare git repo)
@@ -44,7 +45,12 @@ config push
 
 Global email is `banyar.minshin@gmail.com`. Repos under `~/git-repos/work/_ego/` switch to `banyar@ego.live` via `.gitconfig` including `~/.config/git/ego.gitconfig`.
 
-## Workspace System (`ws`)
+## Workspace System (`ws`) — experimental, not core
+
+> An experiment I built and no longer rely on. The fish/zsh/bash functions and
+> `~/.config/workspaces/` files are still tracked, but `ws` is **not part of the
+> core workflow** and the bootstrap script does not depend on it. Documented
+> here for reference; safe to ignore (or delete) on a new machine.
 
 Source of truth: `~/.config/workspaces/*.toml`. Defined in fish, zsh, and bash (parity).
 
@@ -95,14 +101,34 @@ Conventions: full-path wikilinks, YAML frontmatter required in `second-brain/`, 
 
 ## Other
 
-- **zoxide** — `z` for smart cd.
-- **fzf** — installed but not init'd from shell (use defaults).
+- **zoxide** (core) — smart `cd`: `z <dir>` jumps by frecency, `zi` opens an interactive fzf picker. Installed via Brewfile; initialized in fish (`conf.d/zoxide.fish`), zsh, and bash.
+- **fzf** (core) — fuzzy finder; a dependency of zoxide's `zi`. Installed via Brewfile, not init'd as a standalone shell binding (uses defaults).
 - **`config`** alias works in fish, zsh, bash.
 - **`lcj`** — leetcode journal (`~/git-repos/side-projects/lc-notes`, zsh only).
 
 ---
 
 ## New Machine Bootstrap
+
+### The one-command path (preferred)
+
+Everything below (Homebrew → bare-repo checkout → Brewfile → fish + plugins →
+runtimes → verify) is automated by **`~/bootstrap.sh`** (tracked at the repo
+root). On a fresh machine:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/banyar-shin/dotfiles/main/bootstrap.sh | bash
+```
+
+The script is idempotent (safe to re-run) and honors `SKIP_BREW`,
+`SKIP_RUNTIMES`, `SKIP_CHSH`, `DOTFILES_REMOTE`, and `NODE_VERSION` env
+overrides. It does **not** handle credentials/app sign-ins — do step 6 & 7
+below by hand afterward.
+
+The manual steps below are the reference for what the script does (and for
+debugging when a step fails).
+
+### Manual steps (reference)
 
 Order matters — each step assumes the previous one is done.
 
@@ -117,7 +143,9 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 brew bundle --file=~/.config/Brewfile
 ```
 
-The `Brewfile` is generated via `brew bundle dump --file=~/.config/Brewfile --force`. Regenerate after installing new tools.
+The `Brewfile` is a **hand-curated, minimal** install set — not a raw `brew
+bundle dump`. Running `dump` re-adds every one-off experimental tool, so edit
+the file by hand to keep it deliberate. Add new keepers as you adopt them.
 
 ### 2. Dotfiles bare repo
 
@@ -148,18 +176,17 @@ chsh -s /opt/homebrew/bin/fish
 ### 4. Runtimes
 
 ```bash
-# Node via nvm.fish
+# Node via nvm.fish (core)
 fish -c "nvm install 22.22.2 && nvm use 22.22.2 && set -U nvm_default_version 22.22.2"
 
-# Rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# pnpm / yarn shims via corepack (core)
+corepack enable
 
-# Miniconda
-brew install --cask miniconda   # or download installer
-conda init fish bash zsh
+# Python: project-based via uv (installed by the Brewfile) — nothing global.
+#   uv venv && uv sync       # per project
 
-# pnpm
-curl -fsSL https://get.pnpm.io/install.sh | sh -
+# Rust (optional, only if a project needs it):
+#   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
 ### 5. Editors
@@ -190,26 +217,27 @@ Nothing here is tracked in the dotfiles repo. Run these on the new machine:
 
 | App | Setup |
 |---|---|
-| **Raycast** | Install, sign in to Raycast Pro; settings + extensions sync automatically |
+| **Raycast** (core) | Installed by the Brewfile (`cask "raycast"`). Sign in to Raycast Pro — settings + extensions then sync automatically via the cloud (the local `~/.config/raycast/` is an auth token + ~55MB of per-machine extensions, so it stays out of git). |
 | **1Password** | Install, sign in; vaults sync from cloud |
 | **Obsidian** | Install; vault `chrono-brain` syncs via iCloud |
 | **Notion (app)** | Install, sign in |
 | **Slack** | Sign in to workspaces |
 | **Karabiner-Elements** | Installed by Brewfile; load `~/.config/karabiner/karabiner.json` via Preferences → Misc → Open config folder |
-| **Yabai/skhd** | After Brewfile: `yabai --install-service && yabai --start-service`, same for `skhd`. Grant Accessibility + SIP exception |
-| **AeroSpace** | Installed by Brewfile cask `nikitabobko/tap/aerospace`, reads `~/.aerospace.toml` |
+| **AeroSpace** (primary WM) | Installed by Brewfile cask `nikitabobko/tap/aerospace`, reads `~/.aerospace.toml`. Launch once, grant Accessibility. |
+| **Yabai/skhd** (alternative) | Configs tracked but not the daily driver. Only if switching off AeroSpace: `yabai --install-service && yabai --start-service`, same for `skhd`. Grant Accessibility + SIP exception. |
 
 ### 8. Verify
 
 ```bash
 config status                 # should be clean
 brew bundle check --file=~/.config/Brewfile
-fish -c "type ws && type config && type tmux-personal"
+fish -c "type config && type tmux-personal"
 ```
 
 ### 9. Per-app config notes
 
-- **WezTerm** — Gruvbox Material is set by `~/.wezterm.lua`. `Alt+Shift+D` toggles dark/light. Theme state lives in `~/.config/theme-mode` (NOT tracked — local-only).
+- **cmux** (primary terminal) — settings live in the app; `~/.config/cmux/cmux.json` holds file-managed overrides (pane focus `opt+h/j/k/l`). On first launch cmux writes a `settings.json` template (not tracked — app/machine-local).
+- **WezTerm** (alternative) — Gruvbox Material set by `~/.wezterm.lua`. `Alt+Shift+D` toggles dark/light. Theme state lives in `~/.config/theme-mode` (NOT tracked — local-only).
 - **iTerm2 / Terminal.app** — not used; nothing to migrate.
 - **Touch ID for sudo** — re-add to `/etc/pam.d/sudo_local` after a major macOS upgrade.
 
