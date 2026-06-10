@@ -13,7 +13,7 @@ macOS (Apple Silicon). Notes on the moving parts.
 ## Terminal & Editor
 
 - **cmux** (manaflow-ai) — **primary terminal/workspace app.** Config at `~/.config/cmux/cmux.json` (JSONC; file-managed overrides take precedence over the in-app Settings). Pane focus bound to `opt+h/j/k/l`.
-- **WezTerm / kitty / ghostty** — *alternative terminals, still tracked but not primary.* Kept in case I switch back. WezTerm: Gruvbox Material, `Alt+Shift+D` toggles dark/light (writes `~/.config/theme-mode`, `theme-reload` re-inits oh-my-posh). kitty config is generated from a template via `generate_kitty_conf.sh`.
+- **WezTerm / kitty / ghostty** — *alternative terminals, configs still tracked but not primary and **not installed by the Brewfile**.* Kept in case I switch back; `brew install --cask wezterm ghostty` (or kitty) if needed. WezTerm: Gruvbox Material, `Alt+Shift+D` toggles dark/light (writes `~/.config/theme-mode`, `theme-reload` re-inits oh-my-posh). kitty config is generated from a template via `generate_kitty_conf.sh`.
 - **Zed** — primary GUI editor.
 - **nvim** — `$EDITOR`/`$VISUAL`; terminal editing.
 - **Prompt:** oh-my-posh (fish), themes at `~/.config/fish/themes/custom{,-light}.omp.json`. powerlevel10k (`~/.config/p10k/`) kept for zsh sessions.
@@ -21,7 +21,7 @@ macOS (Apple Silicon). Notes on the moving parts.
 ## Runtimes
 
 - **Node** (core) — `~/.local/share/nvm/v22.22.2/` (jorgebucaran/nvm.fish layout). Pinned via `nvm_default_version`.
-- **pnpm** (core) — `~/Library/pnpm`, enabled via corepack (Node package manager of choice).
+- **pnpm** (core) — installed via the Brewfile (Node package manager of choice). corepack ships with node if you ever need yarn.
 - **Python** (core) — **project-based via `uv`** (`uv venv` / `uv sync` per project). No global interpreter to manage. _Conda is no longer part of the core setup;_ `conda-lazy.fish` remains as legacy config in case a machine still has miniconda.
 - **Rust** (optional) — not installed by bootstrap. The shell sources `~/.cargo/env` **if present**, so install rustup by hand only when a project needs it: `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`.
 - **JDK** — `/opt/homebrew/opt/openjdk/bin`.
@@ -179,8 +179,7 @@ chsh -s /opt/homebrew/bin/fish
 # Node via nvm.fish (core)
 fish -c "nvm install 22.22.2 && nvm use 22.22.2 && set -U nvm_default_version 22.22.2"
 
-# pnpm / yarn shims via corepack (core)
-corepack enable
+# pnpm comes from the Brewfile (core). corepack ships with node for yarn.
 
 # Python: project-based via uv (installed by the Brewfile) — nothing global.
 #   uv venv && uv sync       # per project
@@ -208,7 +207,7 @@ Nothing here is tracked in the dotfiles repo. Run these on the new machine:
 | Modal | `modal token new --profile=banyar` (use personal account only) |
 | Notion | Create new integration at notion.so/my-integrations; write key to `~/.config/notion/api_key` |
 | AWS | `aws configure` (if needed) |
-| fly.io | `flyctl auth login` |
+| fly.io | `brew install flyctl` then `flyctl auth login` (no longer in core Brewfile) |
 | Cloudflare | `wrangler login` (if installed) |
 | Anthropic API | export `ANTHROPIC_API_KEY` (rotate first if compromised) |
 | Claude/Codex | Install/sign in per machine; keep `~/.claude/` and `~/.codex/` out of dotfiles |
@@ -237,7 +236,7 @@ fish -c "type config && type tmux-personal"
 ### 9. Per-app config notes
 
 - **cmux** (primary terminal) — settings live in the app; `~/.config/cmux/cmux.json` holds file-managed overrides (pane focus `opt+h/j/k/l`). On first launch cmux writes a `settings.json` template (not tracked — app/machine-local).
-- **WezTerm** (alternative) — Gruvbox Material set by `~/.wezterm.lua`. `Alt+Shift+D` toggles dark/light. Theme state lives in `~/.config/theme-mode` (NOT tracked — local-only).
+- **WezTerm** (alternative, not auto-installed) — `brew install --cask wezterm` if needed. Gruvbox Material set by `~/.wezterm.lua`. `Alt+Shift+D` toggles dark/light. Theme state lives in `~/.config/theme-mode` (NOT tracked — local-only).
 - **iTerm2 / Terminal.app** — not used; nothing to migrate.
 - **Touch ID for sudo** — re-add to `/etc/pam.d/sudo_local` after a major macOS upgrade.
 

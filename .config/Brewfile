@@ -10,45 +10,36 @@ tap "jandedobbeleer/oh-my-posh"   # prompt (fish)
 tap "koekeishiya/formulae"        # yabai + skhd (alternative WM, kept tracked)
 tap "manaflow-ai/cmux"            # primary terminal/workspace app
 tap "nikitabobko/tap"             # aerospace (primary WM)
-tap "xdevplatform/tap"            # xurl
 tap "yakitrak/yakitrak"           # obsidian-cli
 
 # --- CLI tools --------------------------------------------------------------
-brew "cava"
 brew "cmake"
-brew "cocoapods"
 brew "deno"
 brew "fd"
-brew "ffmpeg"
+brew "ffmpeg"          # media; also used by yazi previews
 brew "fish"
-brew "flyctl"
-brew "fzf"            # fuzzy finder; also powers zoxide's interactive `zi`
+brew "fzf"             # fuzzy finder; also powers zoxide's interactive `zi`
 brew "node"
 brew "gh"
 brew "git"
 brew "git-filter-repo"
-brew "imagemagick"
+brew "imagemagick"     # image previews (yazi)
 brew "jq"
 brew "lazygit"
 brew "lua"
-brew "mysql"
 brew "neovim"
 brew "ninja"
 brew "ripgrep"
-brew "p7zip"
 brew "pnpm"
-brew "poppler"
+brew "poppler"         # PDF previews (yazi)
 brew "powerlevel10k"
-brew "premake"
-brew "resvg"
+brew "resvg"           # SVG previews (yazi)
 brew "sevenzip"
 brew "tmux"
 brew "tree"
 brew "uv"
-brew "watchman"
-brew "yarn"
 brew "yazi"
-brew "zoxide"         # core: smart `cd` (z / zi). Initialized in fish/zsh/bash; needs fzf for `zi`
+brew "zoxide"          # core: smart `cd` (z / zi). Initialized in fish/zsh/bash; needs fzf for `zi`
 brew "jandedobbeleer/oh-my-posh/oh-my-posh"
 brew "koekeishiya/formulae/skhd"
 brew "koekeishiya/formulae/yabai"
@@ -56,26 +47,18 @@ brew "yakitrak/yakitrak/obsidian-cli"
 
 # --- Casks (GUI apps + fonts) ----------------------------------------------
 cask "1password-cli"
-cask "nikitabobko/tap/aerospace"
-cask "aldente"
-cask "betterdisplay"
-cask "cmux"
+cask "nikitabobko/tap/aerospace"  # primary WM
+cask "aldente"                    # battery charge limiter
+cask "cmux"                       # primary terminal
 cask "codex"
-cask "cursor"
-cask "dropzone"
+cask "cursor"                     # primary GUI editor
 cask "font-caskaydia-cove-nerd-font"
 cask "font-symbols-only-nerd-font"
-cask "ghostty"
-cask "jordanbaird-ice"
 cask "karabiner-elements"
-cask "mac-mouse-fix"
-cask "ngrok"
 cask "obsidian"
 cask "raycast"
-cask "shottr"
+cask "shottr"                     # screenshots
 cask "slack"
-cask "wezterm"
-cask "xdevplatform/tap/xurl"
 
 # --- VS Code / Cursor extensions -------------------------------------------
 vscode "alefragnani.bookmarks"
@@ -86,7 +69,6 @@ vscode "bradlc.vscode-tailwindcss"
 vscode "esbenp.prettier-vscode"
 vscode "expo.vscode-expo-tools"
 vscode "github.vscode-github-actions"
-vscode "jonathanharty.gruvbox-material-icon-theme"
 vscode "ms-dotnettools.vscode-dotnet-runtime"
 vscode "ms-python.black-formatter"
 vscode "ms-python.debugpy"
@@ -99,4 +81,4 @@ vscode "tomoki1207.pdf"
 cargo "cargo-generate"
 cargo "cargo-machete"
 uv "modal", with: ["python-dotenv"]
-npm "corepack"
+# (corepack ships with node; pnpm comes from brew — no npm globals needed)

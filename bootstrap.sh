@@ -154,8 +154,7 @@ setup_runtimes() {
   fish -c "nvm install $NODE_VERSION; nvm use $NODE_VERSION; set -U nvm_default_version $NODE_VERSION" \
     || warn "nvm install failed — check nvm.fish plugin."
 
-  info "Enabling corepack (pnpm/yarn shims)..."
-  corepack enable 2>/dev/null || warn "corepack enable failed — run it after node is on PATH."
+  # pnpm (and yarn, if kept) are installed by the Brewfile — no corepack needed.
 
   # Python is project-based via uv (installed by the Brewfile). No global env.
   if command -v uv >/dev/null 2>&1; then
