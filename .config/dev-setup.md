@@ -101,8 +101,8 @@ Conventions: full-path wikilinks, YAML frontmatter required in `second-brain/`, 
 
 ## Other
 
-- **zoxide** — `z` for smart cd.
-- **fzf** — installed but not init'd from shell (use defaults).
+- **zoxide** (core) — smart `cd`: `z <dir>` jumps by frecency, `zi` opens an interactive fzf picker. Installed via Brewfile; initialized in fish (`conf.d/zoxide.fish`), zsh, and bash.
+- **fzf** (core) — fuzzy finder; a dependency of zoxide's `zi`. Installed via Brewfile, not init'd as a standalone shell binding (uses defaults).
 - **`config`** alias works in fish, zsh, bash.
 - **`lcj`** — leetcode journal (`~/git-repos/side-projects/lc-notes`, zsh only).
 
